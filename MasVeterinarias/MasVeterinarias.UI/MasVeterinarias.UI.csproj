@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MasVeterinarias.Api\MasVeterinarias.Api.csproj" />
+    <ProjectReference Include="..\MasVeterinarias.Application\MasVeterinarias.Application.csproj" />
+    <ProjectReference Include="..\MasVeterinarias.Domain\MasVeterinarias.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
