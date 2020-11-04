@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MasVeterinarias.Domain.Entities
@@ -29,5 +30,6 @@ namespace MasVeterinarias.Domain.Entities
         [ForeignKey("veterinaria")]
         public int VeterinariaId { get; set; }
         public Veterinaria Veterinaria { get; set; }
+        public ICollection<Detalles> Detalles { get; set; }
     }
 }

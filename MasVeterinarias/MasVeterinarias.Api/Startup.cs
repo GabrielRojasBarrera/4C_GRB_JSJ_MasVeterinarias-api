@@ -4,6 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using FluentValidation.AspNetCore;
+using MasVeterinarias.Domain.Interfaces;
+using MasVeterinarias.Infraestructure.Data;
+using MasVeterinarias.Infraestructure.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -31,10 +34,13 @@ namespace MasVeterinarias.Api
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddControllers();
+            services.AddScoped<MasVeterinariasDBContext>();
+            services.AddScoped(typeof(IRepository<>), typeof(SQLRepository<>));
+            services.AddScoped<ICitaRepository, CitaRepository>();
 
-            //services.AddDbContext<MasVeterinariasContext>(options =>
-            //        options.UseSqlServer(Configuration.GetConnectionString("gabriel"))
-            //);
+            services.AddDbContext<MasVeterinariasDBContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("gabriel"))
+            );
             //services.AddDbContext<MasVeterinariasContext>(options =>
             //        options.UseSqlServer(Configuration.GetConnectionString("jonatan"))
             //);
