@@ -22,7 +22,6 @@ namespace MasVeterinarias.Domain.Entities
         public decimal Precio { get; set; }
         
         public string Duracion { get; set; }
-        
-        public string Estado { get; set; }
+                
     }
 }

@@ -20,7 +20,7 @@ namespace MasVeterinarias.Infraestructure.Data
         DbSet<Veterinaria> Veterinaria { get; set; }
         DbSet<Producto> Producto { get; set; }
         DbSet<Servicio> Servicio { get; set; }
-        DbSet<Vacacion> Vacacion { get; set; }
+      
        
 
     }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using FluentValidation.AspNetCore;
+using MasVeterinarias.Application.Services;
 using MasVeterinarias.Domain.Interfaces;
 using MasVeterinarias.Infraestructure.Data;
 using MasVeterinarias.Infraestructure.Repositories;
@@ -34,20 +35,19 @@ namespace MasVeterinarias.Api
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddControllers();
-            services.AddScoped<MasVeterinariasDBContext>();
+           
             services.AddScoped(typeof(IRepository<>), typeof(SQLRepository<>));
             services.AddScoped<ICitaRepository, CitaRepository>();
 
-            services.AddDbContext<MasVeterinariasDBContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("gabriel"))
-            );
             //services.AddDbContext<MasVeterinariasContext>(options =>
-            //        options.UseSqlServer(Configuration.GetConnectionString("jonatan"))
+            //        options.UseSqlServer(Configuration.GetConnectionString("gabriel"))
             //);
+            
             services.AddMvc().AddFluentValidation(options =>
                     options.RegisterValidatorsFromAssemblies(AppDomain.CurrentDomain.GetAssemblies()));
 
-            //services.AddTransient<IProductoService, ProductoService>();
+            services.AddTransient<IProductoService, ProductoService>();
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
