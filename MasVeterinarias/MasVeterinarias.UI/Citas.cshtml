@@ -1,0 +1,105 @@
+﻿@page
+@model MasVeterinarias.UI.IndexModel
+@{
+}
+
+<section class="content-header">
+    <h1 align="center">RESERVA DE CITAS</h1>
+</section>
+<section class="content">
+    <div class="box-header">
+        <h3 align="center" class="box-title">Agendar cita</h3>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="box box-primary">
+                <div class="box-body">
+                    <div class="post">
+                        <label asp-for="Tipodecita"></label>
+                        <input asp-for="Tipodecita" type="text" class="form-control" />
+                        <br />
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label asp-for="Especie"></label>
+                        <input asp-for="Especie" type="text" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Raza"></label>
+                        <input asp-for="Raza" type="text" class="form-control" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="box box-primary">
+                <br />
+                <div class="box-body">
+                    <div class="form-group">
+                        <label asp-for="Servicios"></label>
+                        <input asp-for="Servicios" type="text" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Categoria"></label>
+                        <input asp-for="Categoria" type="text" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="correo"></label>
+                        <input asp-for="correo" type="text" class="form-control" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="content-header">
+        <h3 align="center">HORARIOS DE ATENCIÓN</h3>
+    </section>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="box box-primary">
+                <div class="box-body">
+                    <div class="form-group">
+                        <label asp-for="fecha"></label>
+                        <input asp-for="fecha" type="datetime" class="form-control" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="box box-primary">
+                <div class="box-body">
+                    <div class="form-group">
+                        <label asp-for="contraseña"></label>
+                        <input asp-for="contraseña" type="password" class="form-control" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="box box-primary">
+                <div class="box-body">
+                    <div class="input-group-">
+                        <asp:Button ID="btnBuscarHorario" runat="server" CssClass="btn btn-danger" Text="Buscar" />
+                        <br />
+                        <br />
+                        <br />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="box box-primary">
+                <div class="box-body">
+                    <div class="form-group">
+                        <label asp-for="telefono"></label>
+                        <input asp-for="telefono" type="text" class="form-control" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-lowercase">
+            <input type="submit" value="Resgistrar cita" class="btn-btn-primary" />
+        </div>
+
+    </div>
+</section>

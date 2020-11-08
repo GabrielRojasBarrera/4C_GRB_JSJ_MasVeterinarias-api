@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasVeterinarias.Domain", "MasVeterinarias.Domain\MasVeterinarias.Domain.csproj", "{C8765600-0CC0-4CAA-B837-9FA1308CBACB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MasVeterinarias.Domain", "MasVeterinarias.Domain\MasVeterinarias.Domain.csproj", "{C8765600-0CC0-4CAA-B837-9FA1308CBACB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasVeterinarias.Infraestructure", "MasVeterinarias.Infraestructure\MasVeterinarias.Infraestructure.csproj", "{13A90483-3F8E-4DDD-B6B1-CA8B664BD8C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MasVeterinarias.Infraestructure", "MasVeterinarias.Infraestructure\MasVeterinarias.Infraestructure.csproj", "{13A90483-3F8E-4DDD-B6B1-CA8B664BD8C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasVeterinarias.Api", "MasVeterinarias.Api\MasVeterinarias.Api.csproj", "{791E573B-DD80-4812-85A9-F299B24264C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MasVeterinarias.Api", "MasVeterinarias.Api\MasVeterinarias.Api.csproj", "{791E573B-DD80-4812-85A9-F299B24264C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasVeterinarias.UI", "MasVeterinarias.UI\MasVeterinarias.UI.csproj", "{AE081DF0-5EEC-4C7E-ABB5-4C325922B4A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MasVeterinarias.UI", "MasVeterinarias.UI\MasVeterinarias.UI.csproj", "{AE081DF0-5EEC-4C7E-ABB5-4C325922B4A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasVeterinarias.Application", "MasVeterinarias.Application\MasVeterinarias.Application.csproj", "{17162218-3299-46DC-9EAA-3697CAB4FECA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MasVeterinarias.Application", "MasVeterinarias.Application\MasVeterinarias.Application.csproj", "{17162218-3299-46DC-9EAA-3697CAB4FECA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
