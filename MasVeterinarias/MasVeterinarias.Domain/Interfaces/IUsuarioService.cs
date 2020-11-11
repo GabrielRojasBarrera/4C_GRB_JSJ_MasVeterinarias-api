@@ -8,10 +8,10 @@ namespace MasVeterinarias.Domain.Interfaces
 {
     public  interface IUsuarioService
     {
-        Task AddUsuario(Usuario producto);
+        Task AddUsuario(Usuario usuario);
         Task DeleteUsuario(int id);
         Task<IEnumerable<Usuario>> GetUsuarios();
         Task<Usuario> GetUsuario(int id);
-        Task UpdateUsuario(Usuario producto);
+        Task UpdateUsuario(Usuario usuario);
     }
 }

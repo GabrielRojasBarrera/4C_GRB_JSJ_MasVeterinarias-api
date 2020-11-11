@@ -23,7 +23,7 @@ namespace MasVeterinarias.Application.Services
             Expression<Func<Producto, bool>> expression = item => item.Id == producto.Id;
             var productos = await _unitOfWork.ProductoRepository.FindByCondition(expression);
             if (productos.Any(item => item.Id == producto.Id))
-                throw new Exception("Este codigo ya ha sido registrado");
+                throw new Exception("Este producto ya ha sido registrado");
 
 
             await _unitOfWork.ProductoRepository.Add(producto);

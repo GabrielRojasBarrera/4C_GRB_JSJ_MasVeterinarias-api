@@ -3,7 +3,7 @@ using MasVeterinarias.Domain.DTOs;
 
 namespace MasVeterinarias.Infraestructure.Validators
 {
-    class ProductoValidator : AbstractValidator<ProductoRequestDto>
+    public  class ProductoValidator : AbstractValidator<ProductoRequestDto>
     {
         public ProductoValidator()
         {
@@ -22,7 +22,7 @@ namespace MasVeterinarias.Infraestructure.Validators
             RuleFor(producto => producto.Etapa)
                .NotNull()
                .Length(3, 50);
-            RuleFor(producto => producto.Categoria)
+            RuleFor(producto => producto.Nombre)
                .NotNull()
                .Length(3, 50);
         }

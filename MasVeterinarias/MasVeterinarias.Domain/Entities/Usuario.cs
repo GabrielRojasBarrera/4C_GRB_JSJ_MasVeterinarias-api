@@ -1,12 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace MasVeterinarias.Domain.Entities
 {
-    public  class Usuario : BaseEntity
+    public partial class Usuario : BaseEntity
     {
-        public string Email { get; set; }        
+        public Usuario()
+        {
+            Cliente = new HashSet<Cliente>();
+            Veterinaria = new HashSet<Veterinaria>();
+        }
+
+       
+        public string Email { get; set; }
         public string Password { get; set; }
+      
+
+        public virtual ICollection<Cliente> Cliente { get; set; }
+        public virtual ICollection<Veterinaria> Veterinaria { get; set; }
     }
 }

@@ -13,10 +13,10 @@ namespace MasVeterinarias.Infraestructure.Repositories
 {
     public class SQLRepository<T> : IRepository<T> where T : BaseEntity
     {
-        protected readonly MasVeterinariasDBContext _context;
+        protected readonly MasVeterinariasBDContext _context;
         private DbSet<T> _entities;
 
-        public SQLRepository(MasVeterinariasDBContext context)
+        public SQLRepository(MasVeterinariasBDContext context)
         {
             this._context = context;
             this._entities = context.Set<T>();

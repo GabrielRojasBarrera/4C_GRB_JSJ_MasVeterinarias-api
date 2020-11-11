@@ -3,22 +3,22 @@ using System.Collections.Generic;
 
 namespace MasVeterinarias.Domain.Entities
 {
-    public class Cliente : BaseEntity
-    {              
-        
-        public DateTime Fecha_Nacimiento { get; set; }
+    public partial class Cliente : BaseEntity
+    {
+        public Cliente()
+        {
+            Cita = new HashSet<Cita>();
+        }
+
+       
+        public int? UsuarioId { get; set; }
        
         public string Nombre { get; set; }
-        
         public string Apellido { get; set; }
-        
         public string Direccion { get; set; }
-        
-        public long Telefono { get; set; }
-
-        //Referencias
-        public ICollection<Cita> Cita { get; set; }
-
-        //un cliente tiene una veterinaria
+        public string Telefono { get; set; }
+       
+        public virtual Usuario Usuario { get; set; }
+        public virtual ICollection<Cita> Cita { get; set; }
     }
 }

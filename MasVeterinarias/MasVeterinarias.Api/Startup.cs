@@ -34,20 +34,30 @@ namespace MasVeterinarias.Api
         {
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+
             services.AddControllers();
            
             services.AddScoped(typeof(IRepository<>), typeof(SQLRepository<>));
-            services.AddScoped<ICitaRepository, CitaRepository>();
-
-            //services.AddDbContext<MasVeterinariasContext>(options =>
-            //        options.UseSqlServer(Configuration.GetConnectionString("gabriel"))
-            //);
             
+
+            services.AddDbContext<MasVeterinariasBDContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("gabriel"))
+            );
+
             services.AddMvc().AddFluentValidation(options =>
                     options.RegisterValidatorsFromAssemblies(AppDomain.CurrentDomain.GetAssemblies()));
 
             services.AddTransient<IProductoService, ProductoService>();
-           
+            services.AddTransient<IEmpleadoService, EmpleadoService>();
+            services.AddTransient<ICitaService, CitaService>();
+            services.AddTransient<IVeterinariaService, VeterinariaService>();
+            services.AddTransient<IDetallesCitaService, DetallesCitaService>();
+            services.AddTransient<IUsuarioService, UsuarioService>();
+            services.AddTransient<IClienteService, ClienteService>();
+            services.AddTransient<ICategoriaService, CategoriaService>();
+            services.AddTransient<IServicioService, ServicioService>();
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -10,27 +10,22 @@ namespace MasVeterinarias.Infraestructure.Validators
     {
         public ServicioValidator()
         {
-            RuleFor(producto => producto.Descripcion)
+            RuleFor(servicio => servicio.Descripcion)
                 .NotNull()
                 .Length(3, 75);
-            RuleFor(producto => producto.Especie)
+            RuleFor(servicio => servicio.Especie)
                .NotNull()
                .Length(3, 50);
-            RuleFor(producto => producto.Raza)
+            RuleFor(servicio => servicio.Raza)
                .NotNull()
                .Length(3, 50);
-            RuleFor(producto => producto.Etapa)
+            RuleFor(servicio => servicio.Nombre)
                .NotNull()
                .Length(3, 50);
-            RuleFor(producto => producto.Categoria)
+            RuleFor(servicio => servicio.Disponibilidad)
                .NotNull()
                .Length(3, 50);
-            RuleFor(producto => producto.Estado)
-              .NotNull()
-              .Length(3, 50);
-            RuleFor(producto => producto.Duracion)
-              .NotNull()
-              .Length(3, 50);
+           
         }
 
     }

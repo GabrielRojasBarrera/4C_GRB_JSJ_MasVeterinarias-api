@@ -4,12 +4,12 @@ using System.Threading.Tasks;
 
 namespace MasVeterinarias.Domain.Interfaces
 {
-    interface ICitaService
+    public  interface ICitaService
     {
-        Task AddEmpleado(Cita empleado);
-        Task DeleteEmpleado(int id);
-        Task<IEnumerable<Empleado>> GetEmpleados();
-        Task<Empleado> GetEmpleado(int id);
-        Task UpdateEmpleado(Empleado empleado);
+        Task AddCita(Cita cita);
+        Task DeleteCita(int id);
+        Task<IEnumerable<Cita>> GetCitas();
+        Task<Cita> GetCita(int id);
+        Task UpdateCita(Cita cita);
     }
 }

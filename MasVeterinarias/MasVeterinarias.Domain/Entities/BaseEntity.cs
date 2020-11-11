@@ -1,10 +1,11 @@
-﻿using System;
+﻿using MasVeterinarias.Domain.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace MasVeterinarias.Domain.Entities
 {
-    public abstract class BaseEntity
+    public abstract class BaseEntity : IEntity
     {
         public int Id { get; set; }
         public bool Status { get; set; }
