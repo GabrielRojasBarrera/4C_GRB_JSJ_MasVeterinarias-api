@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 
 namespace MasVeterinarias.Api.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class UsuarioController : ControllerBase
     {
         private readonly IUsuarioService _usuarioService;
@@ -26,8 +28,7 @@ namespace MasVeterinarias.Api.Controllers
             var usuarios = await _usuarioService.GetUsuarios();
             var usuariosDto = _mapper.Map<IEnumerable<Usuario>, IEnumerable<UsuarioResponseDto>>(usuarios);
             var response = new ApiResponse<IEnumerable<UsuarioResponseDto>>(usuariosDto);
-            if (usuariosDto.Count() <= 0)
-                return Ok(response);
+            
             return Ok(usuariosDto);
         }
 
@@ -37,8 +38,7 @@ namespace MasVeterinarias.Api.Controllers
             var usuario = await _usuarioService.GetUsuario(id);
             var usuarioDto = _mapper.Map<Usuario, UsuarioResponseDto>(usuario);
             var response = new ApiResponse<UsuarioResponseDto>(usuarioDto);
-            if (usuario.Status == false)
-                return Ok(response);
+            
             return Ok(usuarioDto);
         }
 

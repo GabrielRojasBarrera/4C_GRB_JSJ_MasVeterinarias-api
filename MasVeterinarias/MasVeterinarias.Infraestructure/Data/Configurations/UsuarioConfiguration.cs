@@ -19,11 +19,7 @@ namespace MasVeterinarias.Infraestructure.Data.Configurations
 
             builder.Property(e => e.UpdateAt).HasColumnType("datetime");
 
-            builder.Ignore(e => e.CreateAt);
-            builder.Ignore(e => e.CreatedBy);
-            builder.Ignore(e => e.UpdateAt);
-            builder.Ignore(e => e.UpdatedBy);
-            builder.Ignore(e => e.Status);
+            
 
         }
 
