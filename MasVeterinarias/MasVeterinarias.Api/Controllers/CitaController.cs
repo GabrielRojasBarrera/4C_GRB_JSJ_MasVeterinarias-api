@@ -23,6 +23,7 @@ namespace MasVeterinarias.Api.Controllers
             this._citaService = citaService;
             this._mapper = mapper;
         }
+
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
