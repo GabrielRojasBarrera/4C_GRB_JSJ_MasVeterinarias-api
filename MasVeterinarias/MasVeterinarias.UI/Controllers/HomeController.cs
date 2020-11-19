@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using MasVeterinarias.UI.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using MasVeterinarias.UI.Models;
+using System.Diagnostics;
 
 namespace MasVeterinarias.UI.Controllers
 {

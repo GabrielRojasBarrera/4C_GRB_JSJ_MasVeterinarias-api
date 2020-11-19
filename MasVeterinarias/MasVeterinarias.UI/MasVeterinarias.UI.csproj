@@ -5,9 +5,27 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\MasVeterinarias.Api\MasVeterinarias.Api.csproj" />
     <ProjectReference Include="..\MasVeterinarias.Application\MasVeterinarias.Application.csproj" />
     <ProjectReference Include="..\MasVeterinarias.Domain\MasVeterinarias.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\api\" />
+    <Folder Include="Views\Cliente\" />
+    <Folder Include="Views\Empleado\" />
+    <Folder Include="Views\DetallesCita\" />
+    <Folder Include="Views\Categoria\" />
+    <Folder Include="Views\Cita\" />
+    <Folder Include="Views\Producto\" />
+    <Folder Include="Views\Servicio\" />
   </ItemGroup>
 
 </Project>

@@ -1,5 +1,3 @@
-using System;
-
 namespace MasVeterinarias.UI.Models
 {
     public class ErrorViewModel
