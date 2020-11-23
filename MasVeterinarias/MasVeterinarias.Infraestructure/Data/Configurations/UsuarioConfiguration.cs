@@ -1,13 +1,10 @@
 ﻿using MasVeterinarias.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MasVeterinarias.Infraestructure.Data.Configurations
 {
-    public  class UsuarioConfiguration : IEntityTypeConfiguration<Usuario>    
+    public class UsuarioConfiguration : IEntityTypeConfiguration<Usuario>
     {
         public void Configure(EntityTypeBuilder<Usuario> builder)
         {
@@ -19,7 +16,16 @@ namespace MasVeterinarias.Infraestructure.Data.Configurations
 
             builder.Property(e => e.UpdateAt).HasColumnType("datetime");
 
-            
+
+            builder.Ignore(e => e.CreateAt);
+            builder.Ignore(e => e.CreatedBy);
+            builder.Ignore(e => e.UpdateAt);
+            builder.Ignore(e => e.UpdatedBy);
+            builder.Ignore(e => e.Status);
+
+
+
+
 
         }
 

@@ -1,6 +1,7 @@
 ﻿using MasVeterinarias.UI.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -21,10 +22,7 @@ namespace MasVeterinarias.UI.Controllers
             var veterinarias = JsonConvert.DeserializeObject<IList<Veterinaria>>(json);
             return View(veterinarias);
         }
-        public IActionResult Create()
-        {
-            return View();
-        }
+       
         public async Task<IActionResult> Details(int id)
         {
             string url = $"https://localhost:44357/api/Veterinaria";
@@ -40,6 +38,27 @@ namespace MasVeterinarias.UI.Controllers
         public IActionResult Delete(int id)
         {
             return View();
+        }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Create(Usuario usuario)
+        {
+            using (var Client = new HttpClient())
+            {
+                Client.BaseAddress = new Uri("https://localhost:44357/api/Usuario");
+                var posjob = Client.PostAsJsonAsync<Usuario>("usuario", usuario);
+                posjob.Wait();
+
+                var postresult = posjob.Result;
+                if (postresult.IsSuccessStatusCode)
+                    return RedirectToAction("Index");
+            }
+            ModelState.AddModelError(string.Empty, "Ha ocurrido un error");
+            return View(usuario);
         }
     }
 }

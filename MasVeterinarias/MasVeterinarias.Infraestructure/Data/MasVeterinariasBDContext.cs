@@ -37,8 +37,8 @@ namespace MasVeterinarias.Infraestructure.Data
             modelBuilder.ApplyConfiguration<DetallesCita>(new DetallesCitaConfiguration());
             modelBuilder.ApplyConfiguration<Empleado>(new EmpleadoConfiguration());
             modelBuilder.ApplyConfiguration<Producto>(new ProductoConfiguration());
-            modelBuilder.ApplyConfiguration<Servicio>(new ServicioConfiguration());
             modelBuilder.ApplyConfiguration<Usuario>(new UsuarioConfiguration());
+            modelBuilder.ApplyConfiguration<Servicio>(new ServicioConfiguration());            
             modelBuilder.ApplyConfiguration<Veterinaria>(new VeterinariaConfiguration());
             
         }

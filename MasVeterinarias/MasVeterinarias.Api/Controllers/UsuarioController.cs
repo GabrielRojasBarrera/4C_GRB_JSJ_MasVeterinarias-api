@@ -63,9 +63,9 @@ namespace MasVeterinarias.Api.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Put(int id, UsuarioResponseDto ususarioResponse)
+        public async Task<IActionResult> Put(int id, UsuarioRequestDto ususarioRequest)
         {
-            var usuario = _mapper.Map<Usuario>(ususarioResponse);
+            var usuario = _mapper.Map<Usuario>(ususarioRequest);
             usuario.Id = id;
             usuario.UpdateAt = DateTime.Now;
             usuario.UpdatedBy = 1;

@@ -2,9 +2,6 @@
 using MasVeterinarias.Domain.Entities;
 using MasVeterinarias.Domain.Interfaces;
 using MasVeterinarias.Infraestructure.Data;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MasVeterinarias.Infraestructure.Repositories

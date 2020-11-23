@@ -1,32 +1,75 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
     <title>@ViewData["Title"] - MasVeterinarias.UI</title>
-    <meta charset="iso-8859-1">
-    <link href="~/css/style.css" rel="stylesheet" type="text/css">
-    <link href="~/css/ie6.css" rel="stylesheet" type="text/css">
-    <link href="~/css/ie7.css" rel="stylesheet" type="text/css">
-</head>
-<body>
-    <div id="header">
-        <a href="#" id="logo"><img src="~/images/logo.jpg" width="310" height="114" alt=""></a>
-        <ul class="navigation">
-            <li class="active"><a asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
-            <li><a href="petmart.html">Registrate</a></li>
-            <li><a href="about.html">Ingresa</a></li>
-            <li><a href="contact.html">¡Anunciate!</a></li>
-        </ul>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    </div>
-    
+    <title>Shop Homepage - Start Bootstrap Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="~/css/shop-homepage.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand" asp-controller="Home" asp-action="Index">MasVeterinarias</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse">
+                <input type="text" class="form-control" placeholder="Busca Veterinarias...">
+                <span class="input-group-append">
+                    <button class="btn btn-secondary" type="button">Go!</button>
+                </span>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">
+                            Inicio
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Cliente" asp-action="Create">Registrate</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Login" asp-action="Index">Ingresa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Veterinaria" asp-action="Create">¡Anunciate!</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     @RenderBody()
 
-    <div id="footer">
-
-        <div id="footnote">
-            <div class="section">Copyright &copy; 2020 <a href="#">MasVeterinarias</a> Todos los derechos reservados | Website <a target="_blank" href="http://www.MasVeterinarias.com/">MasVeterinarias.com</a></div>
+    <!-- /.container -->
+    <!-- Footer -->
+    <footer class="py-5 bg-primary">
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; MasVeterinarias.com 2020</p>
         </div>
-    </div>
+        <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
+
 </html>
