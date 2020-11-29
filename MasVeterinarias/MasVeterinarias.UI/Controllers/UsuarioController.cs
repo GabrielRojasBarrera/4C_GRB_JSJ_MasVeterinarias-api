@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Net.Http;
 using System;
+using Microsoft.AspNetCore.Http;
 
 namespace MasVeterinarias.UI.Controllers
 {
@@ -34,7 +35,9 @@ namespace MasVeterinarias.UI.Controllers
         //POST: Usuario
         public ActionResult Create()
         {
-            return View();
+                        
+           return View();
+                       
         }
         [HttpPost]
         public ActionResult Create(Usuario usuario)

@@ -1,4 +1,5 @@
 ﻿using MasVeterinarias.UI.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
@@ -14,51 +15,144 @@ namespace MasVeterinarias.UI.Controllers
 
     public class VeterinariaController : Controller
     {
-        HttpClient client = new HttpClient();
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
-            string url = "https://localhost:44357/api/Veterinaria";
-            var json = await client.GetStringAsync(url);
-            var veterinarias = JsonConvert.DeserializeObject<IList<Veterinaria>>(json);
-            return View(veterinarias);
-        }
-       
-        public async Task<IActionResult> Details(int id)
-        {
-            string url = $"https://localhost:44357/api/Veterinaria";
-            var json = await client.GetStringAsync(url);
-            var veterinaria = JsonConvert.DeserializeObject<List<Veterinaria>>(json);
-            var _veterinaria = veterinaria.FirstOrDefault(e => e.Id.Equals(id));
+            IEnumerable<Veterinaria> veterinaria = null;
+            using (var Client = new HttpClient())
+            {
+                Client.BaseAddress = new Uri("https://localhost:44357/api/");
+                var responseTask = Client.GetAsync("veterinaria");
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readjob = result.Content.ReadAsAsync<IList<Veterinaria>>();
+                    readjob.Wait();
+                    veterinaria = readjob.Result;
+                }
+
+
+            }
             return View(veterinaria);
         }
-        public IActionResult Update()
-        {
-            return View();
-        }
-        public IActionResult Delete(int id)
-        {
-            return View();
-        }
 
+        //POST: Usuario
         public ActionResult Create()
         {
-            return View();
+            if (HttpContext.Session.GetString("Id") != null)
+            {
+
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
         }
         [HttpPost]
-        public ActionResult Create(Usuario usuario)
+        public ActionResult Create(Veterinaria veterinaria)
         {
             using (var Client = new HttpClient())
             {
-                Client.BaseAddress = new Uri("https://localhost:44357/api/Usuario");
-                var posjob = Client.PostAsJsonAsync<Usuario>("usuario", usuario);
+                veterinaria.UsuarioId = int.Parse(HttpContext.Session.GetString("Id"));
+                Client.BaseAddress = new Uri("https://localhost:44357/api/Veterinaria");
+                var posjob = Client.PostAsJsonAsync<Veterinaria>("veterinaria", veterinaria);
                 posjob.Wait();
 
                 var postresult = posjob.Result;
                 if (postresult.IsSuccessStatusCode)
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Details" ,"Veterinaria");
             }
             ModelState.AddModelError(string.Empty, "Ha ocurrido un error");
-            return View(usuario);
+            return View(veterinaria);
+        }
+
+        // GET: bY Id
+        public ActionResult Edit(int id)
+        {
+            Veterinaria veterinaria = null;
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://localhost:44357/api/");
+                var responseTask = client.GetAsync("veterinaria/" + id.ToString());
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readtask = result.Content.ReadAsAsync<Veterinaria>();
+                    readtask.Wait();
+                    veterinaria = readtask.Result;
+                }
+            }
+
+            return View(veterinaria);
+        }
+
+
+        [HttpPost]
+        public ActionResult Edit(Veterinaria veterinaria)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://localhost:44357/api/Veterinaria");
+
+                //HTTP POST
+                var putTask = client.PutAsJsonAsync("?id=" + veterinaria.Id, veterinaria);
+                putTask.Wait();
+
+                var result = putTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+
+                    return RedirectToAction("Index");
+                }
+            }
+            return View(veterinaria);
+        }
+
+        public ActionResult Details(int id)
+        {
+            Veterinaria veterinaria = null;
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://localhost:44357/api/");
+                var responseTask = client.GetAsync("veterinaria/" + id.ToString());
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readtask = result.Content.ReadAsAsync<Veterinaria>();
+                    readtask.Wait();
+                    veterinaria = readtask.Result;
+                }
+            }
+
+            return View(veterinaria);
+        }
+
+
+        public ActionResult Delete(int id)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://localhost:44357/api/");
+
+                //HTTP DELETE
+                var deleteTask = client.DeleteAsync("veterinaria/" + id.ToString());
+
+
+                var result = deleteTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+
+                    return RedirectToAction("Index");
+                }
+            }
+
+            return RedirectToAction("Index");
         }
     }
 }

@@ -19,11 +19,9 @@
 
   <ItemGroup>
     <Folder Include="Data\" />
-    <Folder Include="Models\" />
     <Folder Include="Views\Empleado\" />
     <Folder Include="Views\DetallesCita\" />
     <Folder Include="Views\Categoria\" />
-    <Folder Include="Views\Cita\" />
     <Folder Include="Views\Producto\" />
     <Folder Include="Views\Servicio\" />
     <Folder Include="wwwroot\css\" />

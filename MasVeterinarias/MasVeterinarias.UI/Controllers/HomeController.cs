@@ -19,6 +19,16 @@ namespace MasVeterinarias.UI.Controllers
             return View();
         }
 
+        public IActionResult UserIndex()
+        {
+            return View();
+        }
+
+        public IActionResult VIndex()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();

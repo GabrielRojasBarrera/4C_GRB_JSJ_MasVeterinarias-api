@@ -29,8 +29,7 @@ namespace MasVeterinarias.Api.Controllers
             var veterinarias = await _veterinariaService.GetVeterinarias();
             var veterinariasDto = _mapper.Map<IEnumerable<Veterinaria>, IEnumerable<VeterinariaResponseDto>>(veterinarias);
             var response = new ApiResponse<IEnumerable<VeterinariaResponseDto>>(veterinariasDto);
-            if (veterinariasDto.Count() <= 0)
-                return Ok(response);
+           
             return Ok(veterinariasDto);
         }
 
@@ -40,8 +39,7 @@ namespace MasVeterinarias.Api.Controllers
             var veterinaria = await _veterinariaService.GetVeterinaria(id);
             var veterinariaDto = _mapper.Map<Veterinaria, VeterinariaResponseDto>(veterinaria);
             var response = new ApiResponse<VeterinariaResponseDto>(veterinariaDto);
-            if (veterinaria.Status == false)
-                return Ok(response);
+            
             return Ok(veterinariaDto);
         }
 

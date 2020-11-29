@@ -1,4 +1,4 @@
-﻿@model MasVeterinarias.UI.Models.Usuario
+﻿@model MasVeterinarias.UI.Models.Cliente
 
 @{
     ViewData["Title"] = "Create";
@@ -6,31 +6,42 @@
 }
 
 <div class="signup-form">
+    @using (Html.BeginForm())
+    {
     <form action="/examples/actions/confirmation.php" method="post">
-        <h2>Register</h2>
+        <h2>Resgistrate</h2>
         <p class="hint-text">Create your account. It's free and only takes a minute.</p>
         <div class="form-group">
             <div class="row">
-                <div class="col"><input type="text" class="form-control" name="first_name" placeholder="First Name" required="required"></div>
-                <div class="col"><input type="text" class="form-control" name="last_name" placeholder="Last Name" required="required"></div>
+                <div class="col"><input asp-for="Nombre" type="text" class="form-control" name="Nombre" placeholder="Nombre" required="required"><span asp-validation-for="Nombre" class="text-danger"></span></div>
+                <div class="col"><input asp-for="Apellido" type="text" class="form-control" name="Apellido" placeholder="Apellidos" required="required"><span asp-validation-for="Apellido" class="text-danger"></span></div>
             </div>
         </div>
         <div class="form-group">
-            <input type="email" class="form-control" name="email" placeholder="Email" required="required">
+            <input asp-for="Email" class="form-control" type="email" name="Email" placeholder="Email" required="required" />
+            <span asp-validation-for="Email" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" name="password" placeholder="Password" required="required">
+            <input asp-for="Password" class="form-control" type="password" name="password" placeholder="Password" required="required" />
+            <span asp-validation-for="Password" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" required="required">
+            <input asp-for="Direccion" type="text" class="form-control" name="Direccion" placeholder="Direccion" required="required">
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input asp-for="Telefono" type="text" class="form-control" name="Telefono" placeholder="Telefono" required="required">
+            <span asp-validation-for="Telefono" class="text-danger"></span>
         </div>
         <div class="form-group">
             <label class="form-check-label"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-success btn-lg btn-block">Register Now</button>
+            <button type="submit" class="btn btn-success btn-lg btn-block">Registrarse</button>
         </div>
+        <div class="text-center">¿Ya tienes cuenta? <a asp-controller="Login" asp-action="Index"> Inicia sesión</a></div>
     </form>
-    <div class="text-center">Already have an account? <a href="#">Sign in</a></div>
-</div>
+        
+    }
 
+</div>

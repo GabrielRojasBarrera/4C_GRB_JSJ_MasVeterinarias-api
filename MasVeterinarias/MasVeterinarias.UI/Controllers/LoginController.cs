@@ -26,7 +26,7 @@ namespace MasVeterinarias.UI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(Usuario login)
+        public async Task<IActionResult> IndexAsync(Login login)
         {
             var json = await client.GetStringAsync(url);
             var Usuarios = JsonConvert.DeserializeObject<List<Usuario>>(json);
@@ -34,13 +34,9 @@ namespace MasVeterinarias.UI.Controllers
             if (_Usuario != null )
             {
                 HttpContext.Session.SetString("Id", _Usuario.Id.ToString());
-                return RedirectToAction("Menu");
+                return RedirectToAction("UserIndex", "Home");
             }
-            else if (_Usuario != null )
-            {
-                HttpContext.Session.SetString("Id", _Usuario.Id.ToString());
-                return RedirectToAction("MenuVendedor");
-            }
+           
             else if (_Usuario == null)
             {
 
@@ -49,7 +45,7 @@ namespace MasVeterinarias.UI.Controllers
             }
             return View();
         }
-        public IActionResult Menu()
+        public IActionResult Cita()
         {
             if (HttpContext.Session.GetString("Id") != null)
             {
@@ -60,21 +56,11 @@ namespace MasVeterinarias.UI.Controllers
                 return RedirectToAction("Index");
             }
         }
-        public IActionResult MenuVendedor()
-        {
-            if (HttpContext.Session.GetString("Id") != null)
-            {
-                return View();
-            }
-            else
-            {
-                return RedirectToAction("Index");
-            }
-        }
+        
         public IActionResult LogOut()
         {
             HttpContext.Session.Remove("Id");
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
 
     }

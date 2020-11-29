@@ -1,83 +1,104 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using MasVeterinarias.Api.Responses;
+using MasVeterinarias.UI.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace MasVeterinarias.UI.Controllers
 {
     public class ClienteController : Controller
     {
-        // GET: ClienteController
+        HttpClient client = new HttpClient();
+        string url = "https://localhost:44357/api/Cliente/";
         public ActionResult Index()
         {
-            return View();
-        }
+            IEnumerable<Cliente> clientes = null;
+            using (var Client = new HttpClient())
+            {
+                Client.BaseAddress = new Uri("https://localhost:44357/api/");
+                var responseTask = Client.GetAsync("cliente");
+                responseTask.Wait();
 
-        // GET: ClienteController/Details/5
-        public ActionResult Details(int id)
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readjob = result.Content.ReadAsAsync<IList<Cliente>>();
+                    readjob.Wait();
+                    clientes = readjob.Result;
+                }
+
+
+            }
+            return View(clientes);
+        }
+        public IActionResult Create()
         {
             return View();
         }
-
-        // GET: ClienteController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: ClienteController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create( Cliente cliente)
         {
-            try
+            using (var Client = new HttpClient())
             {
-                return RedirectToAction(nameof(Index));
+
+                cliente.UsuarioId = int.Parse(HttpContext.Session.GetString("Id"));
+                Client.BaseAddress = new Uri("https://localhost:44357/api/Cliente");
+                var posjob1 = Client.PostAsJsonAsync<Cliente>("cliente", cliente);
+                posjob1.Wait();
+
+                var postresult = posjob1.Result;               
+                if (postresult.IsSuccessStatusCode )
+                    return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            ModelState.AddModelError(string.Empty, "Ha ocurrido un error");
+            return View(cliente);
         }
 
-        // GET: ClienteController/Edit/5
-        public ActionResult Edit(int id)
+        
+        public async Task<IActionResult> DetailsAsync(int id)
         {
-            return View();
-        }
-
-        // POST: ClienteController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
+            if (HttpContext.Session.GetString("Id") != null)
             {
-                return RedirectToAction(nameof(Index));
+                var json = await client.GetStringAsync(url);
+                var Clientes = JsonConvert.DeserializeObject<List<Cliente>>(json);
+                var _Cliente = Clientes.FirstOrDefault(e => e.Id.Equals(id));
+                return View(_Cliente);
             }
-            catch
+            else
             {
-                return View();
+                return RedirectToAction("Index", "Home");
             }
         }
-
-        // GET: ClienteController/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<IActionResult> UpdateAsync(int id)
         {
-            return View();
+            if (HttpContext.Session.GetString("Id") != null)
+            {
+                var json = await client.GetStringAsync(url);
+                var Clientes = JsonConvert.DeserializeObject<List<Cliente>>(json);
+                var _Cliente = Clientes.FirstOrDefault(e => e.Id.Equals(id));
+                return View(_Cliente);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
-
-        // POST: ClienteController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        [HttpPut]
+        public async Task<IActionResult> UpdateAsync(Cliente ClienteDto)
         {
-            try
+            client.BaseAddress = new Uri("https://localhost:44357/api/Cliente/");
+           
+            var putTask = await client.PutAsJsonAsync("?id=" + ClienteDto.Id, ClienteDto);
+            if (putTask.IsSuccessStatusCode)
             {
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return View(ClienteDto);
         }
     }
 }

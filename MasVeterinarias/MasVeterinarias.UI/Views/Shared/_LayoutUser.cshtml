@@ -21,7 +21,7 @@
 <body>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+    <nav class=" navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
         <div class="container">
             <a class="navbar-brand" asp-controller="Home" asp-action="Index">MasVeterinarias</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,12 +40,18 @@
                             Inicio
                             <span class="sr-only">(current)</span>
                         </a>
-                    </li>
+                    </li>                    
                     <li class="nav-item">
-                        <a class="nav-link" asp-controller="Usuario" asp-action="Create">Registrate</a>
+                        <a class="nav-link" asp-controller="Cliente" asp-action="Create">Citas</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Login" asp-action="Index">Ingresa</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-user"></i> Perfil
+                        </a>                        
+                        <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
+                            <a class="dropdown-item" href="#">My account</a>
+                            <a class="dropdown-item" asp-controller="Login" asp-action="LogOut">Log out</a>
+                        </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" asp-controller="Veterinaria" asp-action="Create">¡Anunciate!</a>

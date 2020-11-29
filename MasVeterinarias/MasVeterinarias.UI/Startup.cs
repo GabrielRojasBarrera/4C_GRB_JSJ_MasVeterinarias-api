@@ -1,8 +1,10 @@
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 
 namespace MasVeterinarias.UI
 {
@@ -19,6 +21,16 @@ namespace MasVeterinarias.UI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddMvc().AddFluentValidation(options =>
+                    options.RegisterValidatorsFromAssemblies(AppDomain.CurrentDomain.GetAssemblies()));
+            services.AddSession();
+            services.AddControllersWithViews();
+            services.AddRouting(option =>
+            {
+                option.LowercaseUrls = true;
+                option.LowercaseQueryStrings = true;
+                option.AppendTrailingSlash = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,7 +50,7 @@ namespace MasVeterinarias.UI
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseSession();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

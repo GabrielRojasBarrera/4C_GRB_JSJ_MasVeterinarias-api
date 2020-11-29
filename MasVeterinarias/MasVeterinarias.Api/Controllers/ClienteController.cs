@@ -29,8 +29,7 @@ namespace MasVeterinarias.Api.Controllers
             var clientes = await _clienteService.GetClientes();
             var clientesDto = _mapper.Map<IEnumerable<Cliente>, IEnumerable<ClienteResponseDto>>(clientes);
             var response = new ApiResponse<IEnumerable<ClienteResponseDto>>(clientesDto);
-            if (clientesDto.Count() <= 0)
-                return Ok(response);
+            
             return Ok(clientesDto);
         }
 
@@ -40,8 +39,7 @@ namespace MasVeterinarias.Api.Controllers
             var cliente = await _clienteService.GetCliente(id);
             var clienteDto = _mapper.Map<Cliente, ClienteResponseDto>(cliente);
             var response = new ApiResponse<ClienteResponseDto>(clienteDto);
-            if (cliente.Status == false)
-                return Ok(response);
+           
             return Ok(clienteDto);
         }
 
