@@ -15,7 +15,7 @@ namespace MasVeterinarias.Domain.Entities
         public int ClienteId { get; set; }
         
         public string NombreMascota { get; set; }
-        public TimeSpan? Hora { get; set; }
+        public string Hora { get; set; }
         public DateTime? Fecha { get; set; }               
         public int ServicioId { get; set; }
 

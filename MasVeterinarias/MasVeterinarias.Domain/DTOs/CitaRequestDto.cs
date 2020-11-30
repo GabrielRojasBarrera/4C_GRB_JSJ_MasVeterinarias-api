@@ -9,7 +9,7 @@ namespace MasVeterinarias.Domain.DTOs
         public int VeterinariaId { get; set; }
         public int ClienteId { get; set; }
         public string NombreMascota { get; set; }
-        public TimeSpan? Hora { get; set; }
+        public string Hora { get; set; }
         public DateTime? Fecha { get; set; }
         public int ServicioId { get; set; }
     }

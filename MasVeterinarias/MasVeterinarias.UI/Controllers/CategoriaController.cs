@@ -1,106 +1,93 @@
 ﻿using MasVeterinarias.UI.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-
-
 namespace MasVeterinarias.UI.Controllers
 {
-
-    public class VeterinariaController : Controller
+    public class CategoriaController : Controller
     {
         public ActionResult Index()
         {
-            IEnumerable<Veterinaria> veterinaria = null;
+            IEnumerable<Categoria> usuario = null;
             using (var Client = new HttpClient())
             {
                 Client.BaseAddress = new Uri("https://localhost:44357/api/");
-                var responseTask = Client.GetAsync("veterinaria");
+                var responseTask = Client.GetAsync("Categoria");
                 responseTask.Wait();
 
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
-                    var readjob = result.Content.ReadAsAsync<IList<Veterinaria>>();
+                    var readjob = result.Content.ReadAsAsync<IList<Categoria>>();
                     readjob.Wait();
-                    veterinaria = readjob.Result;
+                    usuario = readjob.Result;
                 }
 
 
             }
-            return View(veterinaria);
+            return View(usuario);
         }
 
         //POST: Usuario
         public ActionResult Create()
         {
-            if (HttpContext.Session.GetString("Id") != null)
-            {
 
-                return View();
-            }
-            else
-            {
-                return RedirectToAction("Index", "Login");
-            }
+            return View();
+
         }
         [HttpPost]
-        public ActionResult Create(Veterinaria veterinaria)
+        public ActionResult Create(Categoria categoria)
         {
             using (var Client = new HttpClient())
             {
-                 
-                veterinaria.UsuarioId = int.Parse(HttpContext.Session.GetString("Id"));
-                Client.BaseAddress = new Uri("https://localhost:44357/api/Veterinaria");
-                var posjob = Client.PostAsJsonAsync<Veterinaria>("veterinaria", veterinaria);
+                Client.BaseAddress = new Uri("https://localhost:44357/api/Categoria");
+                var posjob = Client.PostAsJsonAsync<Categoria>("categoria", categoria);
                 posjob.Wait();
 
                 var postresult = posjob.Result;
                 if (postresult.IsSuccessStatusCode)
-                    return RedirectToAction("Details", "Veterinaria", veterinaria.Id);
+                    return RedirectToAction("Index");
             }
             ModelState.AddModelError(string.Empty, "Ha ocurrido un error");
-            return View(veterinaria);
+            return View(categoria);
         }
 
         // GET: bY Id
         public ActionResult Edit(int id)
         {
-            Veterinaria veterinaria = null;
+            Usuario usuario = null;
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("https://localhost:44357/api/");
-                var responseTask = client.GetAsync("veterinaria/" + id.ToString());
+                var responseTask = client.GetAsync("usuario/" + id.ToString());
                 responseTask.Wait();
 
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
-                    var readtask = result.Content.ReadAsAsync<Veterinaria>();
+                    var readtask = result.Content.ReadAsAsync<Usuario>();
                     readtask.Wait();
-                    veterinaria = readtask.Result;
+                    usuario = readtask.Result;
                 }
             }
 
-            return View(veterinaria);
+            return View(usuario);
         }
 
 
         [HttpPost]
-        public ActionResult Edit(Veterinaria veterinaria)
+        public ActionResult Edit(Usuario usuario)
         {
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("https://localhost:44357/api/Veterinaria");
+                client.BaseAddress = new Uri("https://localhost:44357/api/Usuario");
 
                 //HTTP POST
-                var putTask = client.PutAsJsonAsync("?id=" + veterinaria.Id, veterinaria);
+                var putTask = client.PutAsJsonAsync("?id=" + usuario.Id, usuario);
                 putTask.Wait();
 
                 var result = putTask.Result;
@@ -110,28 +97,28 @@ namespace MasVeterinarias.UI.Controllers
                     return RedirectToAction("Index");
                 }
             }
-            return View(veterinaria);
+            return View(usuario);
         }
 
         public ActionResult Details(int id)
         {
-            Veterinaria veterinaria = null;
+            Usuario usuario = null;
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("https://localhost:44357/api/");
-                var responseTask = client.GetAsync("veterinaria/" + id.ToString());
+                var responseTask = client.GetAsync("usuario/" + id.ToString());
                 responseTask.Wait();
 
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
-                    var readtask = result.Content.ReadAsAsync<Veterinaria>();
+                    var readtask = result.Content.ReadAsAsync<Usuario>();
                     readtask.Wait();
-                    veterinaria = readtask.Result;
+                    usuario = readtask.Result;
                 }
             }
 
-            return View(veterinaria);
+            return View(usuario);
         }
 
 
@@ -142,7 +129,7 @@ namespace MasVeterinarias.UI.Controllers
                 client.BaseAddress = new Uri("https://localhost:44357/api/");
 
                 //HTTP DELETE
-                var deleteTask = client.DeleteAsync("veterinaria/" + id.ToString());
+                var deleteTask = client.DeleteAsync("usuario/" + id.ToString());
 
 
                 var result = deleteTask.Result;

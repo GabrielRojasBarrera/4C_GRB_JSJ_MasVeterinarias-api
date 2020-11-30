@@ -21,12 +21,9 @@
     <Folder Include="Data\" />
     <Folder Include="Views\Empleado\" />
     <Folder Include="Views\DetallesCita\" />
-    <Folder Include="Views\Categoria\" />
     <Folder Include="Views\Producto\" />
-    <Folder Include="Views\Servicio\" />
     <Folder Include="wwwroot\css\" />
     <Folder Include="wwwroot\images\" />
-    <Folder Include="wwwroot\js\" />
     <Folder Include="wwwroot\lib\bootstrap\" />
     <Folder Include="wwwroot\lib\bootstrap\dist\js\" />
     <Folder Include="wwwroot\lib\jquery-validation-unobtrusive\" />

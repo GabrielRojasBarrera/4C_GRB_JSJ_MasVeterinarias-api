@@ -19,6 +19,10 @@ namespace MasVeterinarias.Infraestructure.Data.Configurations
 
             builder.Property(e => e.UpdateAt).HasColumnType("datetime");
 
+            builder.Property(e => e.Hora)
+               .HasMaxLength(10)
+               .IsUnicode(false);
+
             builder.HasOne(d => d.Cliente)
                 .WithMany(p => p.Cita)
                 .HasForeignKey(d => d.ClienteId)
