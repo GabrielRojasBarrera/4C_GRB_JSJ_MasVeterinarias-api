@@ -46,50 +46,47 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="CategoriaId" class="control-label"></label>
-                    <input asp-for="CategoriaId" type="number" class="form-control"  required data-validation-required-message="Porfavor Esciba la Categoria.">
+                    <input asp-for="CategoriaId" type="number" class="form-control"  >
                     <span asp-validation-for="CategoriaId" class="text-danger"></span>
                 </div>
                 
                 <div class="form-group">
                     <label asp-for="Disponibilidad" class="control-label"></label>
-                    <select asp-for="Disponibilidad" type="text" class="form-control" required data-validation-required-message="Por favor escoja la Disponibilidad.">
-                        <option>Disponible</option>
-                        <option>No Disponible</option>
-                    </select>
+                    <input asp-for="Disponibilidad" type="text" class="form-control" >
                     <span asp-validation-for="Disponibilidad" class="text-danger"></span>
                 </div>                
                 <div class="form-group">
                     <label asp-for="Detalles" class="control-label"></label>
-                    <input asp-for="Detalles" class="form-control" required data-validation-required-message="Por favor escoja la Disponibilidad.">
+                    <input asp-for="Detalles" class="form-control" required  >
                     <span asp-validation-for="Detalles" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Precio" class="control-label"></label>
-                    <input asp-for="Precio" type="number" class="form-control" required data-validation-required-message="Porfavor escriba un Precio."/>
+                    <input asp-for="Precio" type="number" class="form-control" required  />
                     <span asp-validation-for="Precio" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Especie" class="control-label"></label>
-                    <input asp-for="Especie" class="form-control" required data-validation-required-message=" Porfavor escriba una Especie."/>
+                    <input asp-for="Especie" class="form-control" required />
                     <span asp-validation-for="Especie" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Nombre" class="control-label"></label>
-                    <input asp-for="Nombre" class="form-control" required data-validation-required-message="Porfavor escriba un nombre."/>
+                    <input asp-for="Nombre" class="form-control"required  />
                     <span asp-validation-for="Nombre" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Descripcion" class="control-label"></label>
-                    <input asp-for="Descripcion" class="form-control" required data-validation-required-message="Porfavor escriba una Descripcion."/>
+                    <input asp-for="Descripcion" class="form-control" required />
                     <span asp-validation-for="Descripcion" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Raza" class="control-label"></label>
-                    <input asp-for="Raza" class="form-control" required data-validation-required-message="Porfavor escriba uan Raza."/>
+                    <input asp-for="Raza" class="form-control" required />
                     <span asp-validation-for="Raza" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Save" class="btn btn-primary" />
+                    <input type="submit" value="Save" class="btn btn-primary" onclick="alert('Servicio Actualizado EXITOSAMENTE')"/>
                 </div>
             </form>
             <div>

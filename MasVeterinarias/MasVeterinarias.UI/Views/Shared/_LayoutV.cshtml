@@ -59,8 +59,8 @@
                             <i class="fas fa-user"></i> Veterinaria
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
-                            <a class="dropdown-item" href="#">My account</a>
-                            <a class="dropdown-item" href="#">Log out</a>
+                            <a class="dropdown-item" asp-controller="Servicio" asp-action="Index">Administrar</a>
+                            <a class="dropdown-item"  asp-controller="Veterinaria" asp-action="Details">Perfil</a>
                         </div>
                     </li>
                 </ul>
@@ -86,7 +86,7 @@
     <script src="~/js/jqBootstrapValidation.js"></script>
     <script src="~/js/contact_me.js"></script>
 
-    @RenderSection("Scripts", required: false)
+   
 </body>
 
 </html>
