@@ -104,6 +104,26 @@ namespace MasVeterinarias.UI.Controllers
             return View(Servicio);
         }
 
+        public ActionResult Detalles(int id)
+        {
+            Servicio Servicio = null;
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://localhost:44357/api/");
+                var responseTask = client.GetAsync("Servicio/" + id.ToString());
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readtask = result.Content.ReadAsAsync<Servicio>();
+                    readtask.Wait();
+                    Servicio = readtask.Result;
+                }
+            }
+
+            return View(Servicio);
+        }
         public ActionResult Details(int id)
         {
             Servicio Servicio = null;
