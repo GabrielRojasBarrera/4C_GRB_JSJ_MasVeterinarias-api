@@ -26,17 +26,18 @@ namespace MasVeterinarias.UI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> IndexAsync(Login login)
+        public async Task<IActionResult> IndexAsync(Login login ,Veterinaria veterinaria)
         {
             var json = await client.GetStringAsync(url);
             var Usuarios = JsonConvert.DeserializeObject<List<Usuario>>(json);
+            var Veterinaria = JsonConvert.DeserializeObject<List<Veterinaria>>(json);
             var _Usuario = Usuarios.FirstOrDefault(e => e.Email.Equals(login.Email) && e.Password.Equals(login.Password));
+            var _Veterinaria = Veterinaria.FirstOrDefault(e => e.Id.Equals(veterinaria.Id));
             if (_Usuario != null )
             {
                 HttpContext.Session.SetString("Id", _Usuario.Id.ToString());
                 return RedirectToAction("UserIndex", "Home");
             }
-
            
             else if (_Usuario == null)
             {

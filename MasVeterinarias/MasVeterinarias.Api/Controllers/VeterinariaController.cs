@@ -64,7 +64,7 @@ namespace MasVeterinarias.Api.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Put(int id, VeterinariaResponseDto veterinariaResponse)
+        public async Task<IActionResult> Put(int id, VeterinariaRequestDto veterinariaResponse)
         {
             var veterinaria = _mapper.Map<Veterinaria>(veterinariaResponse);
             veterinaria.Id = id;
