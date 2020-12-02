@@ -1,0 +1,68 @@
+﻿@model MasVeterinarias.UI.Models.Categoria
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "_LayoutV";
+}
+
+<div class="container">
+
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">
+        Mi Veterinaria
+
+    </h1>
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="index.html">Servicios</a>
+        </li>
+        <li class="breadcrumb-item active">Editar</li>
+    </ol>
+
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Sidebar Column -->
+        <div class="col-lg-3 mb-4">
+            <div class="list-group">
+                <a href="index.html" class="list-group-item">Detalles del Negocio</a>
+                <a href="about.html" class="list-group-item">Personal</a>
+                <a href="services.html" class="list-group-item active">Categorias</a>
+                <a href="contact.html" class="list-group-item ">Servicios</a>
+                <a href="portfolio-1-col.html" class="list-group-item">Productos</a>
+                <a href="portfolio-2-col.html" class="list-group-item">Citas</a>
+
+            </div>
+        </div>
+        <!-- Content Column -->
+        <div class="col-lg-9 mb-4">
+            <h3>Editar Producto</h3>
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Id" class="control-label"></label>
+                    <input asp-for="Id" class="form-control" readonly />
+                    <span asp-validation-for="Id" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Nombre" class="control-label"></label>
+                    <input asp-for="Nombre" class="form-control" />
+                    <span asp-validation-for="Nombre" class="text-danger"></span>
+                </div>
+                
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" onclick="alert('Categoria Actualizado EXITOSAMENTE')" />
+                </div>
+            </form>
+            <div>
+                <a asp-action="Index">Regresar a la Lista</a>
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+
+</div>
+
+
+

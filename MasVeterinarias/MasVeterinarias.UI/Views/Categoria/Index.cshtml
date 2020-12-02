@@ -1,0 +1,83 @@
+﻿@model IEnumerable<MasVeterinarias.UI.Models.Categoria>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_LayoutV";
+}
+
+<div class="container">
+
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">
+        Mi Veterinaria
+
+    </h1>
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="index.html">Veterinaria</a>
+        </li>
+        <li class="breadcrumb-item active">Categorias</li>
+    </ol>
+
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Sidebar Column -->
+        <div class="col-lg-3 mb-4">
+            <div class="list-group">
+                <a href="index.html" class="list-group-item">Detalles del Negocio</a>
+                <a asp-controller="Empleado" asp-action="Index" class="list-group-item">Personal</a>
+                <a asp-controller="Categoria" asp-action="Index" class="list-group-item active" >Categorias</a>
+                <a asp-controller="Servicio" asp-action="Index" class="list-group-item ">Servicios</a>
+                <a asp-controller="Producto" asp-action="Index" class="list-group-item ">Productos</a>
+                <a href="portfolio-2-col.html" class="list-group-item">Citas</a>
+
+            </div>
+        </div>
+        <!-- Content Column -->
+        <div class="col-lg-9 mb-4">
+            <h3>Categorias</h3>
+            <p>
+                <a asp-action="Create">Crear nuevo</a>
+            </p>
+
+            <table class="table col-lg-9 mb-4">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Id)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Nombre)
+                        </th>
+                        
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Id)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nombre)
+                            </td>
+                            
+                            <td>
+                                @Html.ActionLink("Editar", "Edit", new { id = item.Id })
+                                @Html.ActionLink("Detalles", "Details", new { id = item.Id })
+                                <a href="/Categoria/Delete/@item.Id" onclick="alert('ESTA CATEGORIA SE ELIMINO EXITOSAMNETE')">Eliminar</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- /.row -->
+
+</div>

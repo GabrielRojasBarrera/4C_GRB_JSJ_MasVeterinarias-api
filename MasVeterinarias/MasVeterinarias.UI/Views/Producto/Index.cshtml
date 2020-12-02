@@ -1,11 +1,9 @@
-﻿@model IEnumerable<MasVeterinarias.UI.Models.Servicio>
+﻿@model IEnumerable<MasVeterinarias.UI.Models.Producto>
 
 @{
     ViewData["Title"] = "Index";
     Layout = "_LayoutV";
 }
-
-
 
 <div class="container">
 
@@ -19,7 +17,7 @@
         <li class="breadcrumb-item">
             <a href="index.html">Veterinaria</a>
         </li>
-        <li class="breadcrumb-item active">Servicios</li>
+        <li class="breadcrumb-item active">Productos</li>
     </ol>
 
     <!-- Content Row -->
@@ -30,15 +28,15 @@
                 <a href="index.html" class="list-group-item">Detalles del Negocio</a>
                 <a asp-controller="Empleado" asp-action="Index" class="list-group-item">Personal</a>
                 <a asp-controller="Categoria" asp-action="Index" class="list-group-item">Categorias</a>
-                <a asp-controller="Servicio" asp-action="Index" class="list-group-item active">Servicios</a>
-                <a asp-controller="Producto" asp-action="Index" class="list-group-item">Productos</a>
+                <a asp-controller="Servicio" asp-action="Index" class="list-group-item ">Servicios</a>
+                <a asp-controller="Producto" asp-action="Index" class="list-group-item active">Productos</a>
                 <a href="portfolio-2-col.html" class="list-group-item">Citas</a>
 
             </div>
         </div>
         <!-- Content Column -->
         <div class="col-lg-9 mb-4">
-            <h3>Servicios</h3>
+            <h3>Productos</h3>
             <p>
                 <a asp-action="Create">Crear nuevo</a>
             </p>
@@ -48,18 +46,16 @@
                     <tr>
                         <th>
                             @Html.DisplayNameFor(model => model.Id)
-                        </th>
-
+                        </th>                        
+                       
                         <th>
-                            @Html.DisplayNameFor(model => model.CategoriaId)
+                            @Html.DisplayNameFor(model => model.Marca)
                         </th>
-
                         <th>
-                            @Html.DisplayNameFor(model => model.Disponibilidad)
+                            @Html.DisplayNameFor(model => model.Etapa)
                         </th>
-
                         <th>
-                            @Html.DisplayNameFor(model => model.Detalles)
+                            @Html.DisplayNameFor(model => model.Stock)
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.Precio)
@@ -74,6 +70,9 @@
                             @Html.DisplayNameFor(model => model.Descripcion)
                         </th>
                         <th>
+                            @Html.DisplayNameFor(model => model.Detalles)
+                        </th>
+                        <th>
                             @Html.DisplayNameFor(model => model.Raza)
                         </th>
                         <th></th>
@@ -86,16 +85,15 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.Id)
                         </td>
-
+                        
                         <td>
-                            @Html.DisplayFor(modelItem => item.CategoriaId)
+                            @Html.DisplayFor(modelItem => item.Marca)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Disponibilidad)
+                            @Html.DisplayFor(modelItem => item.Etapa)
                         </td>
-
                         <td>
-                            @Html.DisplayFor(modelItem => item.Detalles)
+                            @Html.DisplayFor(modelItem => item.Stock)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Precio)
@@ -110,12 +108,15 @@
                             @Html.DisplayFor(modelItem => item.Descripcion)
                         </td>
                         <td>
+                            @Html.DisplayFor(modelItem => item.Detalles)
+                        </td>
+                        <td>
                             @Html.DisplayFor(modelItem => item.Raza)
                         </td>
                         <td>
                             @Html.ActionLink("Editar", "Edit", new { id = item.Id })
                             @Html.ActionLink("Detalles", "Details", new { id = item.Id })
-                            <a href="/Servicio/Delete/@item.Id" onclick="alert('Este servicio se elimino Exitosamente')">Eliminar</a>
+                            <a href="/Producto/Delete/@item.Id" onclick="alert('Este producto se elimino Exitosamente')">Eliminar</a>
                         </td>
                     </tr>
                     }

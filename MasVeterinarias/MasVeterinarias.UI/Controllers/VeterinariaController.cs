@@ -113,6 +113,28 @@ namespace MasVeterinarias.UI.Controllers
             return View(veterinaria);
         }
 
+        public IActionResult Detalles(int id)
+        {
+            Veterinaria veterinaria = null;
+            using (var client = new HttpClient())
+            {
+                veterinaria.Id = int.Parse(HttpContext.Session.GetString("Id"));
+                client.BaseAddress = new Uri("https://localhost:44357/api/");
+                var responseTask = client.GetAsync("veterinaria/" + id.ToString());
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readtask = result.Content.ReadAsAsync<Veterinaria>();
+                    readtask.Wait();
+                    veterinaria = readtask.Result;
+                }
+            }
+
+            return View(veterinaria);
+        }
+
         public ActionResult Details(int id)
         {
             Veterinaria veterinaria = null;

@@ -44,6 +44,7 @@ namespace MasVeterinarias.UI.Controllers
         {
             using (var Client = new HttpClient())
             {
+                Producto.VeterinariaId = 1;
                 Client.BaseAddress = new Uri("https://localhost:44357/api/Producto");
                 var posjob = Client.PostAsJsonAsync<Producto>("Producto", Producto);
                 posjob.Wait();

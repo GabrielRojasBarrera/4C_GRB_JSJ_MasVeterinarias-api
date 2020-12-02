@@ -1,0 +1,66 @@
+﻿@model MasVeterinarias.UI.Models.Categoria
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "_LayoutV";
+}
+
+<div class="container">
+
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">
+        Mi Veterinaria
+
+    </h1>
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="index.html">Categorias</a>
+        </li>
+        <li class="breadcrumb-item active">Detalles</li>
+    </ol>
+
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Sidebar Column -->
+        <div class="col-lg-3 mb-4">
+            <div class="list-group">
+                <a href="index.html" class="list-group-item">Detalles del Negocio</a>
+                <a href="about.html" class="list-group-item">Personal</a>
+                <a href="services.html" class="list-group-item active">Categorias</a>
+                <a href="contact.html" class="list-group-item ">Servicios</a>
+                <a href="portfolio-1-col.html" class="list-group-item ">Productos</a>
+                <a href="portfolio-2-col.html" class="list-group-item">Citas</a>
+
+            </div>
+        </div>
+        <!-- Content Column -->
+        <div class="col-lg-9 mb-4">
+            <h3>Detalles de la Categoria</h3>
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Id)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Id)
+                </dd>
+
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Nombre)
+                </dd>
+                
+            </dl>
+
+            <div>
+                @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+                <a asp-action="Index">Regresar a la Lista</a>
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+
+</div>
+

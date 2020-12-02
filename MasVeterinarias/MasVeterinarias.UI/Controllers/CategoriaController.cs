@@ -59,23 +59,23 @@ namespace MasVeterinarias.UI.Controllers
         // GET: bY Id
         public ActionResult Edit(int id)
         {
-            Usuario usuario = null;
+            Categoria categoria = null;
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("https://localhost:44357/api/");
-                var responseTask = client.GetAsync("usuario/" + id.ToString());
+                var responseTask = client.GetAsync("categoria/" + id.ToString());
                 responseTask.Wait();
 
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
-                    var readtask = result.Content.ReadAsAsync<Usuario>();
+                    var readtask = result.Content.ReadAsAsync<Categoria>();
                     readtask.Wait();
-                    usuario = readtask.Result;
+                    categoria = readtask.Result;
                 }
             }
 
-            return View(usuario);
+            return View(categoria);
         }
 
 
@@ -102,23 +102,23 @@ namespace MasVeterinarias.UI.Controllers
 
         public ActionResult Details(int id)
         {
-            Usuario usuario = null;
+            Categoria categoria = null;
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("https://localhost:44357/api/");
-                var responseTask = client.GetAsync("usuario/" + id.ToString());
+                var responseTask = client.GetAsync("categoria/" + id.ToString());
                 responseTask.Wait();
 
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
-                    var readtask = result.Content.ReadAsAsync<Usuario>();
+                    var readtask = result.Content.ReadAsAsync<Categoria>();
                     readtask.Wait();
-                    usuario = readtask.Result;
+                    categoria = readtask.Result;
                 }
             }
 
-            return View(usuario);
+            return View(categoria);
         }
 
 
@@ -129,7 +129,7 @@ namespace MasVeterinarias.UI.Controllers
                 client.BaseAddress = new Uri("https://localhost:44357/api/");
 
                 //HTTP DELETE
-                var deleteTask = client.DeleteAsync("usuario/" + id.ToString());
+                var deleteTask = client.DeleteAsync("categoria/" + id.ToString());
 
 
                 var result = deleteTask.Result;

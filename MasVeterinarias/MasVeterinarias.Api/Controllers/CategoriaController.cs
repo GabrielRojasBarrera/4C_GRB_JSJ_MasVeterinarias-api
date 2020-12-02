@@ -29,8 +29,7 @@ namespace MasVeterinarias.Api.Controllers
             var categorias = await _categoriaService.GetCategorias();
             var categoriasDto = _mapper.Map<IEnumerable<Categoria>, IEnumerable<CategoriaResponseDto>>(categorias);
             var response = new ApiResponse<IEnumerable<CategoriaResponseDto>>(categoriasDto);
-            if (categoriasDto.Count() <= 0)
-                return Ok(response);
+           
             return Ok(categoriasDto);
         }
 
@@ -40,8 +39,7 @@ namespace MasVeterinarias.Api.Controllers
             var categoria = await _categoriaService.GetCategoria(id);
             var categoriaDto = _mapper.Map<Categoria, CategoriaResponseDto>(categoria);
             var response = new ApiResponse<CategoriaResponseDto>(categoriaDto);
-            if (categoria.Status == false)
-                return Ok(response);
+           
             return Ok(categoriaDto);
         }
 

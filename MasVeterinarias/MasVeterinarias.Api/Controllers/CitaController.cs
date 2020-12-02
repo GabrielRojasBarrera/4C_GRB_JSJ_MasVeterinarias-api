@@ -30,8 +30,7 @@ namespace MasVeterinarias.Api.Controllers
             var citas = await _citaService.GetCitas();
             var citasDto = _mapper.Map<IEnumerable<Cita>, IEnumerable<CitaResponseDto>>(citas);
             var response = new ApiResponse<IEnumerable<CitaResponseDto>>(citasDto);
-            if (citasDto.Count() <= 0)
-                return Ok(response);
+            
             return Ok(citasDto);
         }
 
@@ -41,8 +40,7 @@ namespace MasVeterinarias.Api.Controllers
             var cita = await _citaService.GetCita(id);
             var citaDto = _mapper.Map<Cita, CitaResponseDto>(cita);
             var response = new ApiResponse<CitaResponseDto>(citaDto);
-            if (cita.Status == false)
-                return Ok(response);
+            
             return Ok(citaDto);
         }
 

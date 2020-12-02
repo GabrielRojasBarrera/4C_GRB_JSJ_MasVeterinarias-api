@@ -29,8 +29,7 @@ namespace MasVeterinarias.Api.Controllers
             var productos = await _productoService.GetProductos();
             var productosDto = _mapper.Map<IEnumerable<Producto>, IEnumerable<ProductoResponseDto>>(productos);
             var response = new ApiResponse<IEnumerable<ProductoResponseDto>>(productosDto);
-            if (productosDto.Count() <= 0)
-                return Ok(response);
+            
             return Ok(productosDto);
         }
 
@@ -40,8 +39,7 @@ namespace MasVeterinarias.Api.Controllers
             var producto = await _productoService.GetProducto(id);
             var productoDto = _mapper.Map<Producto, ProductoResponseDto>(producto);
             var response = new ApiResponse<ProductoResponseDto>(productoDto);
-            if (producto.Status == false)
-                return Ok(response);
+          
             return Ok(productoDto);
         }
 
