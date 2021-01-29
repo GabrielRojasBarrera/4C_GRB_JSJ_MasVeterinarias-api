@@ -15,67 +15,60 @@
 
             <section class="my-4">
 
-                <h6 class="font-weight-bold mb-3">Condition</h6>
+                <h6 class="font-weight-bold mb-3">@Html.DisplayFor(model => model.CategoriaId)</h6>
 
                 <div class="form-check pl-0 mb-3">
                     <input type="checkbox" class="form-check-input filled-in" id="new">
-                    <label class="form-check-label small text-uppercase card-link-secondary" for="new">New</label>
+                    <label class="form-check-label small text-uppercase card-link-secondary" for="new">Veterinarios</label>
                 </div>
                 <div class="form-check pl-0 mb-3">
                     <input type="checkbox" class="form-check-input filled-in" id="used">
-                    <label class="form-check-label small text-uppercase card-link-secondary" for="used">Used</label>
+                    <label class="form-check-label small text-uppercase card-link-secondary" for="used">Esteticos</label>
+                </div>
+               
+
+            </section>
+            <section class="my-4">
+
+                <h6 class="font-weight-bold mb-3">@Html.DisplayFor(model => model.Especie)</h6>
+
+                <div class="form-check pl-0 mb-3">
+                    <input type="checkbox" class="form-check-input filled-in" id="new">
+                    <label class="form-check-label small text-uppercase card-link-secondary" for="new">perros</label>
+                </div>
+                <div class="form-check pl-0 mb-3">
+                    <input type="checkbox" class="form-check-input filled-in" id="used">
+                    <label class="form-check-label small text-uppercase card-link-secondary" for="used">Gatos</label>
                 </div>
                 <div class="form-check pl-0 mb-3">
                     <input type="checkbox" class="form-check-input filled-in" id="collectible">
-                    <label class="form-check-label small text-uppercase card-link-secondary" for="collectible">Collectible</label>
+                    <label class="form-check-label small text-uppercase card-link-secondary" for="collectible">Aves</label>
                 </div>
                 <div class="form-check pl-0 mb-3 pb-1">
                     <input type="checkbox" class="form-check-input filled-in" id="renewed">
-                    <label class="form-check-label small text-uppercase card-link-secondary" for="renewed">Renewed</label>
+                    <label class="form-check-label small text-uppercase card-link-secondary" for="renewed">peces</label>
                 </div>
 
             </section>
             <section class="my-4">
 
-                <h6 class="font-weight-bold mb-3">Condition</h6>
+                <h6 class="font-weight-bold mb-3">@Html.DisplayFor(model => model.Raza)</h6>
 
                 <div class="form-check pl-0 mb-3">
                     <input type="checkbox" class="form-check-input filled-in" id="new">
-                    <label class="form-check-label small text-uppercase card-link-secondary" for="new">New</label>
+                    <label class="form-check-label small text-uppercase card-link-secondary" for="new">Maltes</label>
                 </div>
                 <div class="form-check pl-0 mb-3">
                     <input type="checkbox" class="form-check-input filled-in" id="used">
-                    <label class="form-check-label small text-uppercase card-link-secondary" for="used">Used</label>
+                    <label class="form-check-label small text-uppercase card-link-secondary" for="used">french</label>
                 </div>
                 <div class="form-check pl-0 mb-3">
                     <input type="checkbox" class="form-check-input filled-in" id="collectible">
-                    <label class="form-check-label small text-uppercase card-link-secondary" for="collectible">Collectible</label>
+                    <label class="form-check-label small text-uppercase card-link-secondary" for="collectible">labrador</label>
                 </div>
                 <div class="form-check pl-0 mb-3 pb-1">
                     <input type="checkbox" class="form-check-input filled-in" id="renewed">
-                    <label class="form-check-label small text-uppercase card-link-secondary" for="renewed">Renewed</label>
-                </div>
-
-            </section>
-            <section class="my-4">
-
-                <h6 class="font-weight-bold mb-3">Condition</h6>
-
-                <div class="form-check pl-0 mb-3">
-                    <input type="checkbox" class="form-check-input filled-in" id="new">
-                    <label class="form-check-label small text-uppercase card-link-secondary" for="new">New</label>
-                </div>
-                <div class="form-check pl-0 mb-3">
-                    <input type="checkbox" class="form-check-input filled-in" id="used">
-                    <label class="form-check-label small text-uppercase card-link-secondary" for="used">Used</label>
-                </div>
-                <div class="form-check pl-0 mb-3">
-                    <input type="checkbox" class="form-check-input filled-in" id="collectible">
-                    <label class="form-check-label small text-uppercase card-link-secondary" for="collectible">Collectible</label>
-                </div>
-                <div class="form-check pl-0 mb-3 pb-1">
-                    <input type="checkbox" class="form-check-input filled-in" id="renewed">
-                    <label class="form-check-label small text-uppercase card-link-secondary" for="renewed">Renewed</label>
+                    <label class="form-check-label small text-uppercase card-link-secondary" for="renewed">chihuahua</label>
                 </div>
 
             </section>
@@ -97,10 +90,10 @@
                         <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
                         <div class="card-body">
                             <h4 class="card-title">
-                                <a href="#">Item One</a>
+                                <a href="#">Baño Perro</a>
                             </h4>
                             <h5>$24.99</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                            <p class="card-text">baños a perro</p>
                         </div>
                         <div class="card-footer">
                             <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
@@ -113,10 +106,10 @@
                         <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
                         <div class="card-body">
                             <h4 class="card-title">
-                                <a href="#">Item Two</a>
+                                <a href="#">Baño Gatos</a>
                             </h4>
-                            <h5>$24.99</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
+                            <h5>$200</h5>
+                            <p class="card-text">Baño Gatos</p>
                         </div>
                         <div class="card-footer">
                             <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
@@ -129,10 +122,10 @@
                         <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
                         <div class="card-body">
                             <h4 class="card-title">
-                                <a href="#">Item Three</a>
+                                <a href="#">Limpiado de dientes perro</a>
                             </h4>
-                            <h5>$24.99</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                            <h5>$400</h5>
+                            <p class="card-text">Limpiado dental</p>
                         </div>
                         <div class="card-footer">
                             <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
@@ -145,10 +138,10 @@
                         <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
                         <div class="card-body">
                             <h4 class="card-title">
-                                <a href="#">Item Four</a>
+                                <a href="#">Corte de pelo perro Grande</a>
                             </h4>
-                            <h5>$24.99</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                            <h5>$500</h5>
+                            <p class="card-text">corte de pelo</p>
                         </div>
                         <div class="card-footer">
                             <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
@@ -161,10 +154,10 @@
                         <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
                         <div class="card-body">
                             <h4 class="card-title">
-                                <a href="#">Item Five</a>
+                                <a href="#">Corte perro pequeño</a>
                             </h4>
-                            <h5>$24.99</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
+                            <h5>$300</h5>
+                            <p class="card-text">Corte perro pequeño.</p>
                         </div>
                         <div class="card-footer">
                             <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
@@ -177,10 +170,10 @@
                         <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
                         <div class="card-body">
                             <h4 class="card-title">
-                                <a href="#">Item Six</a>
+                                <a href="#">Corte de uñas perro</a>
                             </h4>
-                            <h5>$24.99</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                            <h5>$35</h5>
+                            <p class="card-text">Corte de uñas</p>
                         </div>
                         <div class="card-footer">
                             <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>

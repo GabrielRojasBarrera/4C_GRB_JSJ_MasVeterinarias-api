@@ -1,4 +1,6 @@
-﻿namespace MasVeterinarias.UI.Models
+﻿using Microsoft.AspNetCore.Http;
+
+namespace MasVeterinarias.UI.Models
 {
     public class Veterinaria
     {

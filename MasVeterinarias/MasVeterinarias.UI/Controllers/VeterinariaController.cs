@@ -1,12 +1,9 @@
 ﻿using MasVeterinarias.UI.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Threading.Tasks;
 
 
 
@@ -15,6 +12,7 @@ namespace MasVeterinarias.UI.Controllers
 
     public class VeterinariaController : Controller
     {
+       
         public ActionResult Index()
         {
             IEnumerable<Veterinaria> veterinaria = null;
@@ -51,23 +49,27 @@ namespace MasVeterinarias.UI.Controllers
             }
         }
         [HttpPost]
-        public ActionResult Create(Veterinaria veterinaria)
+        public ActionResult Create(Veterinaria veterinaria  )
         {
+           
             using (var Client = new HttpClient())
             {
-                 
+
+
                 veterinaria.UsuarioId = int.Parse(HttpContext.Session.GetString("Id"));
                 Client.BaseAddress = new Uri("https://localhost:44357/api/Veterinaria");
                 var posjob = Client.PostAsJsonAsync<Veterinaria>("veterinaria", veterinaria);
                 posjob.Wait();
-
+               
                 var postresult = posjob.Result;
                 if (postresult.IsSuccessStatusCode)
-                    return RedirectToAction("Details", "Veterinaria", veterinaria.Id);
+                    return RedirectToAction("Details", "Veterinaria");
             }
             ModelState.AddModelError(string.Empty, "Ha ocurrido un error");
             return View(veterinaria);
         }
+        
+       
 
         // GET: bY Id
         public ActionResult Edit(int id)

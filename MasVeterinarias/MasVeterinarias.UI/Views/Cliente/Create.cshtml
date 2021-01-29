@@ -2,46 +2,59 @@
 
 @{
     ViewData["Title"] = "Create";
-    Layout = "_LayoutRegister";
+    Layout = "_LayoutVregister";
 }
 
-<div class="signup-form">
+<div class="container-xl">
     @using (Html.BeginForm())
     {
-    <form action="/examples/actions/confirmation.php" method="post">
-        <h2>Resgistrate</h2>
-        <p class="hint-text">Create your account. It's free and only takes a minute.</p>
-        <div class="form-group">
-            <div class="row">
-                <div class="col"><input asp-for="Nombre" type="text" class="form-control" name="Nombre" placeholder="Nombre" required="required"><span asp-validation-for="Nombre" class="text-danger"></span></div>
-                <div class="col"><input asp-for="Apellido" type="text" class="form-control" name="Apellido" placeholder="Apellidos" required="required"><span asp-validation-for="Apellido" class="text-danger"></span></div>
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <div class="contact-form">
+                    <h1>Completa el registro</h1>
+                    <p class="hint-text">Complata el registro para comenzar a aprobechar el maximo a tu cuenta.</p>
+                    <form action="/examples/actions/confirmation.php" method="post">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="Escribe el Nombre">Nombre</label>
+                                    <input asp-for="Nombre" type="text" class="form-control" id="inputFirstName" required>
+                                    <span asp-validation-for="Nombre" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="Escribe el Nombre">Apellido</label>
+                                    <input asp-for="Apellido" type="text" class="form-control" id="inputFirstName" required>
+                                    <span asp-validation-for="Apellido" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="Escribe el Nombre">Direccion</label>
+                                    <input asp-for="Direccion" type="text" class="form-control" id="inputFirstName" required>
+                                    <span asp-validation-for="Direccion" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="inputLastName">Telefono</label>
+                                    <input asp-for="Telefono" type="text" class="form-control" id="inputLastName" required>
+                                    <span asp-validation-for="Telefono" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <input type="submit" class="btn btn-primary" value="Submit">
+                    </form>
+                </div>
             </div>
         </div>
-        <div class="form-group">
-            <input asp-for="Email" class="form-control" type="email" name="Email" placeholder="Email" required="required" />
-            <span asp-validation-for="Email" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <input asp-for="Password" class="form-control" type="password" name="password" placeholder="Password" required="required" />
-            <span asp-validation-for="Password" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <input asp-for="Direccion" type="text" class="form-control" name="Direccion" placeholder="Direccion" required="required">
-            <span asp-validation-for="Password" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <input asp-for="Telefono" type="text" class="form-control" name="Telefono" placeholder="Telefono" required="required">
-            <span asp-validation-for="Telefono" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label class="form-check-label"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
-        </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-success btn-lg btn-block">Registrarse</button>
-        </div>
-        <div class="text-center">¿Ya tienes cuenta? <a asp-controller="Login" asp-action="Index"> Inicia sesión</a></div>
-    </form>
-        
     }
+
 
 </div>

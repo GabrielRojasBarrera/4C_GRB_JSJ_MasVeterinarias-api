@@ -13,8 +13,7 @@ namespace MasVeterinarias.UI.Controllers
 {
     public class ClienteController : Controller
     {
-        HttpClient client = new HttpClient();
-        string url = "https://localhost:44357/api/Cliente/";
+        
         public ActionResult Index()
         {
             IEnumerable<Cliente> clientes = null;
@@ -36,10 +35,12 @@ namespace MasVeterinarias.UI.Controllers
             }
             return View(clientes);
         }
+
         public IActionResult Create()
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult Create( Cliente cliente)
         {
@@ -59,46 +60,95 @@ namespace MasVeterinarias.UI.Controllers
             return View(cliente);
         }
 
-        
-        public async Task<IActionResult> DetailsAsync(int id)
+
+
+        public IActionResult Details(int id)
         {
-            if (HttpContext.Session.GetString("Id") != null)
+            
+            Cliente cliente = null;
+            using (var client = new HttpClient())
             {
-                var json = await client.GetStringAsync(url);
-                var Clientes = JsonConvert.DeserializeObject<List<Cliente>>(json);
-                var _Cliente = Clientes.FirstOrDefault(e => e.Id.Equals(id));
-                return View(_Cliente);
+                id = int.Parse(HttpContext.Session.GetString("Id"));
+                client.BaseAddress = new Uri("https://localhost:44357/api/");
+                var responseTask = client.GetAsync("Cliente/" + id.ToString());
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readtask = result.Content.ReadAsAsync<Cliente>();
+                    readtask.Wait();
+                    cliente = readtask.Result;
+                }
             }
-            else
-            {
-                return RedirectToAction("Index", "Home");
-            }
+            return View(cliente);        
         }
-        public async Task<IActionResult> UpdateAsync(int id)
+
+        public ActionResult Edit(int id)
         {
-            if (HttpContext.Session.GetString("Id") != null)
+            Cliente cliente = null;
+            using (var client = new HttpClient())
             {
-                var json = await client.GetStringAsync(url);
-                var Clientes = JsonConvert.DeserializeObject<List<Cliente>>(json);
-                var _Cliente = Clientes.FirstOrDefault(e => e.Id.Equals(id));
-                return View(_Cliente);
+                
+                client.BaseAddress = new Uri("https://localhost:44357/api/");
+                var responseTask = client.GetAsync("Cliente/" + id.ToString());
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readtask = result.Content.ReadAsAsync<Cliente>();
+                    readtask.Wait();
+                    cliente = readtask.Result;
+                }
             }
-            else
-            {
-                return RedirectToAction("Index", "Home");
-            }
+
+            return View(cliente);
         }
-        [HttpPut]
-        public async Task<IActionResult> UpdateAsync(Cliente ClienteDto)
+
+
+        [HttpPost]
+        public ActionResult Edit(Cliente cliente)
         {
-            client.BaseAddress = new Uri("https://localhost:44357/api/Cliente/");
-           
-            var putTask = await client.PutAsJsonAsync("?id=" + ClienteDto.Id, ClienteDto);
-            if (putTask.IsSuccessStatusCode)
+            using (var client = new HttpClient())
             {
-                return RedirectToAction("Index");
+                
+                client.BaseAddress = new Uri("https://localhost:44357/api/Servicio");
+
+                //HTTP POST
+                var putTask = client.PutAsJsonAsync("?id=" + cliente.Id, cliente);
+                putTask.Wait();
+
+                var result = putTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+
+                    return RedirectToAction("Index");
+                }
             }
-            return View(ClienteDto);
+            return View(cliente);
         }
+
+        public ActionResult Delete(int id)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://localhost:44357/api/");
+
+                //HTTP DELETE
+                var deleteTask = client.DeleteAsync("Servicio/" + id.ToString());
+
+
+                var result = deleteTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+
+                    return RedirectToAction("Index");
+                }
+            }
+
+            return RedirectToAction("Index");
+        }
+
     }
 }

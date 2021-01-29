@@ -1,4 +1,5 @@
 ﻿using MasVeterinarias.UI.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -40,6 +41,8 @@ namespace MasVeterinarias.UI.Controllers
         {
             using (var Client = new HttpClient())
             {
+                
+                cita.ClienteId = int.Parse(HttpContext.Session.GetString("Id"));
                 Client.BaseAddress = new Uri("https://localhost:44357/api/Cita");
                 var posjob = Client.PostAsJsonAsync<Cita>("usuario", cita);
                 posjob.Wait();

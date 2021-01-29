@@ -1,0 +1,73 @@
+﻿@model MasVeterinarias.UI.Models.Cliente
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "_LayoutUser";
+}
+
+<div class="container">
+
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">
+        Hola Usuario
+
+    </h1>
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="index.html">Productos</a>
+        </li>
+        <li class="breadcrumb-item active">Detalles</li>
+    </ol>
+
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Sidebar Column -->
+        <div class="col-lg-3 mb-4">
+            <div class="list-group">
+                <a href="index.html" class="list-group-item">Mis datos</a>
+                <a href="about.html" class="list-group-item">Historial de citas</a>
+            </div>
+        </div>
+        <!-- Content Column -->
+        <div class="col-lg-9 mb-4">
+            <h3>Mis datos</h3>
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                
+                <div class="form-group">
+                    <label asp-for="Nombre" class="control-label"></label>
+                    <input asp-for="Nombre" class="form-control" />
+                    <span asp-validation-for="Nombre" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Apellido" class="control-label"></label>
+                    <input asp-for="Apellido" class="form-control" />
+                    <span asp-validation-for="Apellido" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Direccion" class="control-label"></label>
+                    <input asp-for="Direccion" class="form-control" />
+                    <span asp-validation-for="Direccion" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Telefono" class="control-label"></label>
+                    <input asp-for="Telefono" class="form-control" />
+                    <span asp-validation-for="Telefono" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+            <div>
+                <a asp-action="Details">Back to List</a>
+            </div>
+
+        </div>
+        
+    
+    </div>
+    <!-- /.row -->
+
+</div>
+

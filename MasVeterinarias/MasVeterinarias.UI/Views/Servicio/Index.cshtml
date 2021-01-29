@@ -81,44 +81,44 @@
                 </thead>
                 <tbody>
                     @foreach (var item in Model)
-                    {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Id)
-                        </td>
+                     {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Id)
+                            </td>
 
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CategoriaId)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Disponibilidad)
-                        </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CategoriaId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Disponibilidad)
+                            </td>
 
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Detalles)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Precio)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Especie)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Nombre)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Descripcion)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Raza)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Editar", "Edit", new { id = item.Id })
-                            @Html.ActionLink("Detalles", "Details", new { id = item.Id })
-                            <a href="/Servicio/Delete/@item.Id" onclick="alert('Este servicio se elimino Exitosamente')">Eliminar</a>
-                        </td>
-                    </tr>
-                    }
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Detalles)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Precio)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Especie)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nombre)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Descripcion)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Raza)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Editar", "Edit", new { id = item.Id })
+                                @Html.ActionLink("Detalles", "Details", new { id = item.Id })
+                                <a href="/Servicio/Delete/@item.Id" onclick="alert('Este servicio se elimino Exitosamente')">Eliminar</a>
+                            </td>
+                        </tr>
+                     }
                 </tbody>
             </table>
         </div>
