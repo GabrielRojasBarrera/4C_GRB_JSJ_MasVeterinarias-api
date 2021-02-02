@@ -18,43 +18,40 @@
 
 </head>
 
-<body>
+<body class="bg-light">
 
     <!-- Navigation -->
-    <nav class=" navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
         <div class="container">
-            <a class="navbar-brand" asp-controller="Home" asp-action="Index">MasVeterinarias</a>
+            <a class="navbar-brand text-info font-weight-bold " asp-controller="Home" asp-action="Index" style="font-size:25px">
+                <img src="/images/mas.png" alt="" class="d-inline-block align-baseline">
+                Veterinarias
+            </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse">
-                <input type="text" class="form-control" placeholder="Busca Veterinarias...">
-                <span class="input-group-append">
-                    <button class="btn btn-secondary" type="button">Go!</button>
-                </span>
+                <form class="form-inline ">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar veterinarias" aria-label="Search">
+                    <button class="btn btn-primary my-2 my-sm-0" type="submit">Buscar</button>
+                </form>
             </div>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">
-                            Inicio
-                            <span class="sr-only">(current)</span>
-                        </a>
-                    </li>                    
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Cita" asp-action="Create">Citas</a>
+                        <a class="nav-link " href="#"> Inicio<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-user" asp-controller="Cliente" asp-action="Details"></i> Perfil
-                        </a>                        
+                        </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
-                            <a class="dropdown-item"  asp-controller="Cliente" asp-action="Details">My account</a>
+                            <a class="dropdown-item" asp-controller="Cliente" asp-action="Details">My account</a>
                             <a class="dropdown-item" asp-controller="Login" asp-action="LogOut">Log out</a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-controller="Veterinaria" asp-action="Create">¡Anunciate!</a>
+                        @Html.ActionLink("¡Anunciate!", "Create", "Veterinaria", new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-outline-danger" })
                     </li>
                 </ul>
             </div>
@@ -65,9 +62,9 @@
 
     <!-- /.container -->
     <!-- Footer -->
-    <footer class="py-5 bg-primary">
+    <footer class="py-5 bg-white shadow-lg">
         <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; MasVeterinarias.com 2020</p>
+            <p class="m-0 text-center text-dark">Copyright &copy; MasVeterinarias.com 2020</p>
         </div>
         <!-- /.container -->
     </footer>
@@ -75,7 +72,7 @@
     <!-- Bootstrap core JavaScript -->
     <script src="~/vendor/jquery/jquery.min.js"></script>
     <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    @RenderSection("Scripts", required: false)
+
 </body>
 
 </html>

@@ -36,7 +36,7 @@ namespace MasVeterinarias.UI.Controllers
         }
 
         //POST: Usuario
-        public ActionResult Create()
+        public IActionResult Create()
         {
             if (HttpContext.Session.GetString("Id") != null)
             {
@@ -48,6 +48,7 @@ namespace MasVeterinarias.UI.Controllers
                 return RedirectToAction("Index", "Login");
             }
         }
+
         [HttpPost]
         public ActionResult Create(Veterinaria veterinaria  )
         {

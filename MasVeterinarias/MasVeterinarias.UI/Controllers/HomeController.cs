@@ -1,7 +1,11 @@
 ﻿using MasVeterinarias.UI.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net.Http;
+
 
 namespace MasVeterinarias.UI.Controllers
 {
@@ -14,19 +18,73 @@ namespace MasVeterinarias.UI.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public ActionResult Index()
         {
-            return View();
+            IEnumerable<Veterinaria> veterinaria = null;
+            using (var Client = new HttpClient())
+            {
+                Client.BaseAddress = new Uri("https://localhost:44357/api/");
+                var responseTask = Client.GetAsync("veterinaria");
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readjob = result.Content.ReadAsAsync<IList<Veterinaria>>();
+                    readjob.Wait();
+                    veterinaria = readjob.Result;
+                }
+
+
+            }
+            return View(veterinaria);
         }
+
+
+       
 
         public IActionResult UserIndex()
         {
-            return View();
+            IEnumerable<Veterinaria> veterinaria = null;
+            using (var Client = new HttpClient())
+            {
+                Client.BaseAddress = new Uri("https://localhost:44357/api/");
+                var responseTask = Client.GetAsync("veterinaria");
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readjob = result.Content.ReadAsAsync<IList<Veterinaria>>();
+                    readjob.Wait();
+                    veterinaria = readjob.Result;
+                }
+
+
+            }
+            return View(veterinaria);
         }
 
         public IActionResult VIndex()
         {
-            return View();
+            IEnumerable<Veterinaria> veterinaria = null;
+            using (var Client = new HttpClient())
+            {
+                Client.BaseAddress = new Uri("https://localhost:44357/api/");
+                var responseTask = Client.GetAsync("veterinaria");
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readjob = result.Content.ReadAsAsync<IList<Veterinaria>>();
+                    readjob.Wait();
+                    veterinaria = readjob.Result;
+                }
+
+
+            }
+            return View(veterinaria);
         }
 
         public IActionResult Privacy()

@@ -12,5 +12,6 @@
     <WebStackScaffolding_IsReferencingScriptLibrariesSelected>False</WebStackScaffolding_IsReferencingScriptLibrariesSelected>
     <WebStackScaffolding_LayoutPageFile />
     <WebStackScaffolding_EnablerDialogWidth>600</WebStackScaffolding_EnablerDialogWidth>
+    <ShowAllFiles>false</ShowAllFiles>
   </PropertyGroup>
 </Project>

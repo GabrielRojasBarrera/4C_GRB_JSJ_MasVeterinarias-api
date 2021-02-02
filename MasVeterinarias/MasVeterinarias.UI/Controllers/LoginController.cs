@@ -36,7 +36,7 @@ namespace MasVeterinarias.UI.Controllers
             if (_Usuario != null )
             {
                 HttpContext.Session.SetString("Id", _Usuario.Id.ToString());
-                return RedirectToAction("UserIndex", "Home");
+                return RedirectToAction("VIndex", "Home");
             }
             
             else if (_Usuario == null)
