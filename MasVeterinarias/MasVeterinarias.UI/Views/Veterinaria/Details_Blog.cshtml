@@ -1,6 +1,6 @@
 ﻿@model MasVeterinarias.UI.Models.Veterinaria
 @{
-    ViewData["Title"] = "Veterinaria Page";
+    ViewData["Title"] = "Details";
     Layout = "_LayoutV";
 }
 
@@ -9,7 +9,7 @@
         <div class="row h-100 align-items-center">
             <div class="col-lg-12">
                 <h1 class="display-4 text-white mt-5 mb-2"> @Html.DisplayFor(model => model.Nombre)</h1>
-                
+
             </div>
         </div>
     </div>
@@ -23,7 +23,7 @@
             <h2>Acerca de nosotros</h2>
             <hr>
             <p>@Html.DisplayFor(model => model.Descripcion)</p>
-           
+
         </div>
         <div class="col-md-4 mb-5">
             <h2>Contactanos</h2>
@@ -46,12 +46,22 @@
     <!-- /.row -->
 
     <div class="row">
-        
+        <div class="col-lg-4 mb-4">
+            <div class="card h-100">
+                <h4 class="card-header">Citas</h4>
+                <div class="card-body">
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+                </div>
+                <div class="card-footer">
+                    <a asp-controller="Cita" asp-action="Create" class="btn btn-primary">Ver Mas</a>
+                </div>
+            </div>
+        </div>
         <div class="col-lg-4 mb-4">
             <div class="card h-100">
                 <h4 class="card-header">Servicios</h4>
                 <div class="card-body">
-                    <p class="card-text"></p>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ipsam eos, nam perspiciatis natus commodi similique totam consectetur praesentium molestiae atque exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.</p>
                 </div>
                 <div class="card-footer">
                     <a asp-controller="Servicio" asp-action="Detalles" class="btn btn-primary">Ver Mas</a>
@@ -62,10 +72,10 @@
             <div class="card h-100">
                 <h4 class="card-header">Productos</h4>
                 <div class="card-body">
-                    <p class="card-text"></p>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
                 </div>
                 <div class="card-footer">
-                    <a asp-controller="Producto" asp-action="Detalles" class="btn btn-primary">Ver Mas</a>
+                    <a asp-controller="Productos" asp-action="Index" class="btn btn-primary">Ver Mas</a>
                 </div>
             </div>
         </div>
@@ -73,3 +83,4 @@
     <!-- /.row -->
 
 </div>
+
