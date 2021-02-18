@@ -1,34 +1,53 @@
 ﻿using MasVeterinarias.UI.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace MasVeterinarias.UI.Controllers
 {
     public class CitaController : Controller
     {
-        public ActionResult Index()
+        public string url = "https://localhost:44357/api/Cita";
+
+
+
+        public IActionResult Index()
         {
-            IEnumerable<Cita> cita = null;
-            using (var Client = new HttpClient())
-            {
-                Client.BaseAddress = new Uri("https://localhost:44357/api/");
-                var responseTask = Client.GetAsync("cita");
-                responseTask.Wait();
+            //IEnumerable<Cita> cita = null;
+            //using (var Client = new HttpClient())
+            //{
+            //    Client.BaseAddress = new Uri("https://localhost:44357/api/");
+            //    var responseTask = Client.GetAsync("Cita");
 
-                var result = responseTask.Result;
-                if (result.IsSuccessStatusCode)
-                {
-                    var readjob = result.Content.ReadAsAsync<IList<Cita>>();
-                    readjob.Wait();
-                    cita = readjob.Result;
-                }
+            //    responseTask.Wait();
+
+            //    var result = responseTask.Result;
+            //    if (result.IsSuccessStatusCode)
+            //    {
+            //        var readjob = result.Content.ReadAsAsync<IList<Cita>>();
+            //        readjob.Wait();
+            //        cita = readjob.Result;
 
 
-            }
-            return View(cita);
+            //    }
+
+
+            //}
+            return View(/*cita*/);
+        }
+
+        
+        public async Task<JsonResult> GetEvents()
+        {
+            var Client = new HttpClient();
+            var json = await Client.GetStringAsync(url);
+            var Citas = JsonConvert.DeserializeObject<List<Cita>>(json);
+           
+            return new JsonResult(Citas.ToArray());
         }
 
 
@@ -36,15 +55,17 @@ namespace MasVeterinarias.UI.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult Create(Cita cita)
         {
             using (var Client = new HttpClient())
             {
-                
-                cita.ClienteId = int.Parse(HttpContext.Session.GetString("Id"));
+
+                cita.VeterinariaId = 1;
+                cita.ClienteId = 1;
                 Client.BaseAddress = new Uri("https://localhost:44357/api/Cita");
-                var posjob = Client.PostAsJsonAsync<Cita>("usuario", cita);
+                var posjob = Client.PostAsJsonAsync<Cita>("Cita", cita);
                 posjob.Wait();
 
                 var postresult = posjob.Result;
@@ -62,7 +83,7 @@ namespace MasVeterinarias.UI.Controllers
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("https://localhost:44357/api/");
-                var responseTask = client.GetAsync("cita/" + id.ToString());
+                var responseTask = client.GetAsync("Cita/" + id.ToString());
                 responseTask.Wait();
 
                 var result = responseTask.Result;
@@ -105,7 +126,7 @@ namespace MasVeterinarias.UI.Controllers
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("https://localhost:44357/api/");
-                var responseTask = client.GetAsync("usuario/" + id.ToString());
+                var responseTask = client.GetAsync("Cita/" + id.ToString());
                 responseTask.Wait();
 
                 var result = responseTask.Result;
@@ -128,7 +149,7 @@ namespace MasVeterinarias.UI.Controllers
                 client.BaseAddress = new Uri("https://localhost:44357/api/");
 
                 //HTTP DELETE
-                var deleteTask = client.DeleteAsync("cita/" + id.ToString());
+                var deleteTask = client.DeleteAsync("Cita/" + id.ToString());
 
 
                 var result = deleteTask.Result;
@@ -141,6 +162,8 @@ namespace MasVeterinarias.UI.Controllers
 
             return RedirectToAction("Index");
         }
+
+
 
 
 

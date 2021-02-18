@@ -13,7 +13,8 @@ namespace MasVeterinarias.UI.Controllers
 {
     public class ClienteController : Controller
     {
-        
+        HttpClient client = new HttpClient();
+        public string url = "https://localhost:44357/api/Usuario";
         public ActionResult Index()
         {
             IEnumerable<Cliente> clientes = null;
@@ -47,7 +48,7 @@ namespace MasVeterinarias.UI.Controllers
             using (var Client = new HttpClient())
             {
 
-                cliente.UsuarioId = int.Parse(HttpContext.Session.GetString("Id"));
+                cliente.UsuarioId = 1;
                 Client.BaseAddress = new Uri("https://localhost:44357/api/Cliente");
                 var posjob1 = Client.PostAsJsonAsync<Cliente>("cliente", cliente);
                 posjob1.Wait();
@@ -84,12 +85,13 @@ namespace MasVeterinarias.UI.Controllers
             return View(cliente);        
         }
 
-        public ActionResult Edit(int id)
+
+        public  IActionResult Edit(int id)
         {
             Cliente cliente = null;
             using (var client = new HttpClient())
             {
-                
+                id = int.Parse(HttpContext.Session.GetString("Id"));
                 client.BaseAddress = new Uri("https://localhost:44357/api/");
                 var responseTask = client.GetAsync("Cliente/" + id.ToString());
                 responseTask.Wait();
@@ -104,11 +106,12 @@ namespace MasVeterinarias.UI.Controllers
             }
 
             return View(cliente);
+
         }
 
 
         [HttpPost]
-        public ActionResult Edit(Cliente cliente)
+        public IActionResult Edit(Cliente cliente)
         {
             using (var client = new HttpClient())
             {

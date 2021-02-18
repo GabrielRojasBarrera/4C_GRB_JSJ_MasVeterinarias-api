@@ -20,45 +20,66 @@ namespace MasVeterinarias.UI.Controllers
         }
         HttpClient client = new HttpClient();
         public string url = "https://localhost:44357/api/Usuario";
+        public string urlv = "https://localhost:44357/api/Veterinaria";
         public IActionResult Index()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> IndexAsync(Login login)
+        public async Task<IActionResult> Index(Login login, Veterinaria veterinaria, Usuario usuario)
         {
             var json = await client.GetStringAsync(url);
+            var jsonV = await client.GetStringAsync(urlv);
             var Usuarios = JsonConvert.DeserializeObject<List<Usuario>>(json);
-            var Clientes = JsonConvert.DeserializeObject<List<Cliente>>(json);
-            var Veterinarias = JsonConvert.DeserializeObject<List<Veterinaria>>(json);            
-            var _Usuario = Usuarios.FirstOrDefault(e => e.Email.Equals(login.Email) && e.Password.Equals(login.Password));
-            if (_Usuario != null )
+            var Veterinarias = JsonConvert.DeserializeObject<List<Veterinaria>>(jsonV);
+            var _Usuario = Usuarios.FirstOrDefault(e => e.Email.Equals(login.Email) && e.Password.Equals(login.Password) );
+            var _Usuariov = Veterinarias.FirstOrDefault(e => e.UsuarioId.Equals(_Usuario.Id));
+            if (_Usuario != null && _Usuariov == null)
             {
                 HttpContext.Session.SetString("Id", _Usuario.Id.ToString());
-                return RedirectToAction("VIndex", "Home");
+                return RedirectToAction("Usuario");
             }
-            
-            else if (_Usuario == null)
+            else if (_Usuario != null && _Usuariov!= null)
+            {
+                HttpContext.Session.SetString("Id", _Usuariov.Id.ToString());
+                return RedirectToAction("Veterinaria");
+            }
+            else if (_Usuario == null && _Usuariov == null)
             {
 
                 login.status = false;
                 return View();
             }
             return View();
+
         }
-        public IActionResult Cita()
+        public IActionResult Usuario()
         {
             if (HttpContext.Session.GetString("Id") != null)
             {
-                return View();
+                return RedirectToAction("UserIndex", "Home");
+                
             }
             else
             {
-                return RedirectToAction("Index");
+                return View();
             }
         }
-        
+
+        public IActionResult Veterinaria()
+        {
+            if (HttpContext.Session.GetString("Id") != null)
+            {
+                return RedirectToAction("VIndex", "Home");
+
+            }
+            else
+            {
+                return View();
+            }
+        }
+
         public IActionResult LogOut()
         {
             HttpContext.Session.Remove("Id");

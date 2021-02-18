@@ -64,7 +64,7 @@ namespace MasVeterinarias.UI.Controllers
                
                 var postresult = posjob.Result;
                 if (postresult.IsSuccessStatusCode)
-                    return RedirectToAction("Details", "Veterinaria");
+                    return RedirectToAction("VIndex", "Home");
             }
             ModelState.AddModelError(string.Empty, "Ha ocurrido un error");
             return View(veterinaria);
