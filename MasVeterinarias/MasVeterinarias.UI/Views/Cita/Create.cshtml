@@ -36,25 +36,43 @@
                     </div>
                     <div class="control-group form-group">
                         <div class="controls">
-                            <label asp-for="Hora" class="control-label"></label>
-                            <input asp-for="Hora" class="form-control" />
-                            <span asp-validation-for="Hora" class="text-danger"></span>
+                            <label asp-for="ServicioId" class="control-label">Servicio</label>
+                            <select class="form-control" asp-for="ServicioId">
+                                <option>Baño Perro Grande </option>
+                                <option>Baño Gato</option>
+                                <option>Lavado de dientes Perro</option>
+                            </select>
+                            <span asp-validation-for="ServicioId" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="control-group form-group">
                         <div class="controls">
                             <label asp-for="Fecha" class="control-label"></label>
-                            <input asp-for="Fecha" class="form-control" />
+                            <input asp-for="Fecha" type="date" class="form-control" />
                             <span asp-validation-for="Fecha" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="control-group form-group">
                         <div class="controls">
-                            <label asp-for="ServicioId" class="control-label">Servicio</label>
-                            <input asp-for="ServicioId" class="form-control" />
-                            <span asp-validation-for="ServicioId" class="text-danger"></span>
+                            <label asp-for="Hora" class="control-label"></label>
+                            <select class="form-control" type="time" asp-for="Hora">
+                                <option>10:00:00</option>
+                                
+                                <option>11:00:00</option>
+                                <option>11:30:00</option>
+                                <option>12:00:00</option>
+                                
+                                <option>13:00:00</option>
+                                <option>13:30:00</option>                                
+                                <option>14:30:00</option>
+                                
+                                <option>15:30:00</option>
+                                
+                            </select>
+                            <span asp-validation-for="Hora" class="text-danger"></span>
                         </div>
                     </div>
+
                     <div id="success"></div>
                     <!-- For success/fail messages -->
                     <input type="submit" value="Create" class="btn btn-primary" />

@@ -1,4 +1,4 @@
-﻿@model MasVeterinarias.UI.Models.Veterinaria
+﻿@model MasVeterinarias.UI.Models.Veterinaria 
 
 @{
     ViewData["Title"] = "Create";
@@ -7,14 +7,14 @@
 }
 
 <div class="container-xl">
-    @using (Html.BeginForm())
-    {
+   
+    
         <div class="row">
             <div class="col-md-8 mx-auto">
                 <div class="contact-form">
                     <h1>¡Anunciate!</h1>
                     <p class="hint-text">Complata el registro para comenzar a anunciarte como nunca antes.</p>
-                    <form asp-action="Create" method="post" enctype="multipart/form-data">
+                    <form asp-action="Create" asp-controller="Veterinaria" method="post" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
@@ -27,10 +27,11 @@
                                 <div class="input-group-prepend">
                                     <label for="Escribe el Nombre">Logotipo</label>
                                 </div>
+                                
                                 <div class="custom-file">
-                                    <input asp-for="Imagen" type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                                    <input asp-for="MyFile"  type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
                                     <label class="custom-file-label" for="inputGroupFile01"></label>
-                                    <span asp-validation-for="Imagen" class="text-danger"></span>
+
                                 </div>
                             </div>
                         </div>
@@ -86,12 +87,12 @@
                             <textarea asp-for="Descripcion" class="form-control" id="inputMessage" rows="5" required></textarea>
                             <span asp-validation-for="Descripcion" class="text-danger"></span>
                         </div>
-                        <input type="submit" class="btn btn-primary" value="Submit" >
+                        <input type="submit" class="btn btn-primary" value="Submit">
                     </form>
                 </div>
             </div>
         </div>
-     }
+    
 
 
 </div>

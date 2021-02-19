@@ -15,6 +15,7 @@ namespace MasVeterinarias.UI.Models
         public string Nombre { get; set; }
         public string Telefono { get; set; }
         public string Direccion { get; set; }
+        public IFormFile MyFile { get; set; }
 
     }
 }
