@@ -15,6 +15,11 @@ namespace MasVeterinarias.UI.Controllers
     {
         private IWebHostEnvironment _enviroment;
 
+        public VeterinariaController(IWebHostEnvironment env)
+        {
+            _enviroment = env;
+        }
+
         public ActionResult Index()
         {
             IEnumerable<Veterinaria> veterinaria = null;
@@ -52,13 +57,17 @@ namespace MasVeterinarias.UI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Veterinaria veterinaria  )
+        public async Task<ActionResult> Create(Veterinaria veterinaria)
         {
-           
+            var filename = System.IO.Path.Combine(_enviroment.ContentRootPath,
+                "Uploads", veterinaria.MyFile.FileName);
+
+            await veterinaria.MyFile.CopyToAsync(
+               new System.IO.FileStream(filename, System.IO.FileMode.Create));
             using (var Client = new HttpClient())
             {
 
-
+                veterinaria.Imagen = veterinaria.MyFile.FileName;
                 veterinaria.UsuarioId = int.Parse(HttpContext.Session.GetString("Id"));
                 Client.BaseAddress = new Uri("https://localhost:44357/api/Veterinaria");
                 var posjob = Client.PostAsJsonAsync<Veterinaria>("veterinaria", veterinaria);
@@ -208,10 +217,7 @@ namespace MasVeterinarias.UI.Controllers
         }
 
 
-        public VeterinariaController(IWebHostEnvironment env)
-        {
-            _enviroment = env;
-        }
+        
 
         public async Task<IActionResult> Upload(UploadModel upload)
         {

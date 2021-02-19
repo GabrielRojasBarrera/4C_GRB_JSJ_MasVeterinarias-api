@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Upload\**" />
+    <Content Remove="Upload\**" />
+    <EmbeddedResource Remove="Upload\**" />
+    <None Remove="Upload\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
@@ -19,7 +26,6 @@
 
   <ItemGroup>
     <Folder Include="Data\" />
-    <Folder Include="Upload\" />
     <Folder Include="Views\DetallesCita\" />
     <Folder Include="wwwroot\lib\bootstrap\" />
     <Folder Include="wwwroot\lib\bootstrap\dist\js\" />
