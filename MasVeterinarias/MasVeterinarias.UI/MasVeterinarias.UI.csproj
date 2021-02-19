@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <Folder Include="Data\" />
+    <Folder Include="Upload\" />
     <Folder Include="Views\DetallesCita\" />
     <Folder Include="wwwroot\lib\bootstrap\" />
     <Folder Include="wwwroot\lib\bootstrap\dist\js\" />

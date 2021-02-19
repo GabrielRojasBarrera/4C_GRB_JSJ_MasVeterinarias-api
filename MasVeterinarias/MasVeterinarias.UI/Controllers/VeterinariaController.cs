@@ -1,18 +1,20 @@
 ﻿using MasVeterinarias.UI.Models;
+using MasVeterinarias.UI.Models.ViewModel;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
-
-
+using System.Threading.Tasks;
 
 namespace MasVeterinarias.UI.Controllers
 {
 
     public class VeterinariaController : Controller
     {
-       
+        private IWebHostEnvironment _enviroment;
+
         public ActionResult Index()
         {
             IEnumerable<Veterinaria> veterinaria = null;
@@ -204,5 +206,24 @@ namespace MasVeterinarias.UI.Controllers
 
             return RedirectToAction("Index");
         }
+
+
+        public VeterinariaController(IWebHostEnvironment env)
+        {
+            _enviroment = env;
+        }
+
+        public async Task<IActionResult> Upload(UploadModel upload)
+        {
+
+            var fileName = System.IO.Path.Combine(_enviroment.ContentRootPath,
+                "upload", upload.MyFile.FileName);
+
+            await upload.MyFile.CopyToAsync(new System.IO.FileStream(fileName, System.IO.FileMode.Create));
+
+            return RedirectToAction("Upload");
+        }
+
+
     }
 }
