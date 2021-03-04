@@ -69,7 +69,7 @@ namespace MasVeterinarias.UI.Controllers
             Cliente cliente = null;
             using (var client = new HttpClient())
             {
-                id = int.Parse(HttpContext.Session.GetString("Id"));
+                id = 1;
                 client.BaseAddress = new Uri("https://localhost:44357/api/");
                 var responseTask = client.GetAsync("Cliente/" + id.ToString());
                 responseTask.Wait();

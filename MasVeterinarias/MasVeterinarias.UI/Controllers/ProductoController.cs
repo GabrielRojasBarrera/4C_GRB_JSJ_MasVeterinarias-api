@@ -39,6 +39,7 @@ namespace MasVeterinarias.UI.Controllers
             return View();
 
         }
+
         [HttpPost]
         public ActionResult Create(Producto Producto)
         {
@@ -121,6 +122,8 @@ namespace MasVeterinarias.UI.Controllers
 
             return View(Producto);
         }
+
+
         public ActionResult Details(int id)
         {
             Producto Producto = null;

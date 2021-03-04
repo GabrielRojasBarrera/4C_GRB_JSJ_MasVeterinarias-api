@@ -8,7 +8,6 @@
 
 <div class="container-xl">
    
-    
         <div class="row">
             <div class="col-md-8 mx-auto">
                 <div class="contact-form">
@@ -27,10 +26,11 @@
                                 <div class="input-group-prepend">
                                     <label for="Escribe el Nombre">Logotipo</label>
                                 </div>
-                                
+
                                 <div class="custom-file">
-                                    <input asp-for="MyFile"  type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                                    <label class="custom-file-label" for="inputGroupFile01"></label>
+                                    <label class="custom-file-label" for="customFile">Escoje tu imagen</label>
+                                    <input asp-for="MyFile" type="file" class="custom-file-input" id="customFile">
+                                    <span asp-validation-for="Imagen" class="text-danger"></span>
 
                                 </div>
                             </div>
@@ -79,6 +79,10 @@
                                 <option value="Lunes">Lunes</option>
                                 <option value="Martes">Martes</option>
                                 <option value="Miercoles">Miercoles</option>
+                                <option value="Miercoles">Jueves</option>
+                                <option value="Miercoles">Viernes</option>
+                                <option value="Miercoles">Sabado</option>
+                                <option value="Miercoles">Domingo</option>
                             </select>
                             <span asp-validation-for="DiasLaborales" class="text-danger"></span>
                         </div>
@@ -88,12 +92,17 @@
                             <span asp-validation-for="Descripcion" class="text-danger"></span>
                         </div>
                         <input type="submit" class="btn btn-primary" value="Submit">
+                        <script>
+                            // Add the following code if you want the name of the file appear on select
+                            $(".custom-file-input").on("change", function () {
+                                var fileName = $(this).val().split("\\").pop();
+                                $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+                            });
+                        </script>
                     </form>
                 </div>
             </div>
         </div>
-    
-
-
+        
 </div>
 

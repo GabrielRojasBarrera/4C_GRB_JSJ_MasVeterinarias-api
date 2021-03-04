@@ -3,8 +3,10 @@ using MasVeterinarias.UI.Models.ViewModel;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -60,7 +62,7 @@ namespace MasVeterinarias.UI.Controllers
         public async Task<ActionResult> Create(Veterinaria veterinaria)
         {
             var filename = System.IO.Path.Combine(_enviroment.ContentRootPath,
-                "Uploads", veterinaria.MyFile.FileName);
+                "wwwroot", "Uploads", veterinaria.MyFile.FileName);
 
             await veterinaria.MyFile.CopyToAsync(
                new System.IO.FileStream(filename, System.IO.FileMode.Create));
@@ -107,12 +109,20 @@ namespace MasVeterinarias.UI.Controllers
 
 
         [HttpPost]
-        public ActionResult Edit(Veterinaria veterinaria)
+        public async Task<ActionResult> Edit(Veterinaria veterinaria)
         {
+            var filename = System.IO.Path.Combine(_enviroment.ContentRootPath,
+               "wwwroot", "Uploads", veterinaria.MyFile.FileName);
+
+            await veterinaria.MyFile.CopyToAsync(
+               new System.IO.FileStream(filename, System.IO.FileMode.Create));
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("https://localhost:44357/api/Veterinaria");
+                veterinaria.UsuarioId = int.Parse(HttpContext.Session.GetString("Id"));
 
+                veterinaria.Imagen = veterinaria.MyFile.FileName;
+                client.BaseAddress = new Uri("https://localhost:44357/api/Veterinaria");
+                
                 //HTTP POST
                 var putTask = client.PutAsJsonAsync("?id=" + veterinaria.Id, veterinaria);
                 putTask.Wait();
@@ -155,6 +165,10 @@ namespace MasVeterinarias.UI.Controllers
             Veterinaria veterinaria = null;
             using (var client = new HttpClient())
             {
+              
+                
+              
+                
                 id = int.Parse(HttpContext.Session.GetString("Id"));
                 client.BaseAddress = new Uri("https://localhost:44357/api/");
                 var responseTask = client.GetAsync("veterinaria/" + id.ToString());

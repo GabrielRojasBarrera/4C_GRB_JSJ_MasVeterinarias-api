@@ -70,7 +70,7 @@ namespace MasVeterinarias.UI.Controllers
 
                 var postresult = posjob.Result;
                 if (postresult.IsSuccessStatusCode)
-                    return RedirectToAction("Index");
+                    return RedirectToAction("UserIndex", "Home");
             }
             ModelState.AddModelError(string.Empty, "Ha ocurrido un error");
             return View(cita);
@@ -162,10 +162,6 @@ namespace MasVeterinarias.UI.Controllers
 
             return RedirectToAction("Index");
         }
-
-
-
-
 
 
     }

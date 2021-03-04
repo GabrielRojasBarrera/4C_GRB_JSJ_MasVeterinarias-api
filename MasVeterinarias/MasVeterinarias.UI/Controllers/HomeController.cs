@@ -23,6 +23,7 @@ namespace MasVeterinarias.UI.Controllers
             IEnumerable<Veterinaria> veterinaria = null;
             using (var Client = new HttpClient())
             {
+                
                 Client.BaseAddress = new Uri("https://localhost:44357/api/");
                 var responseTask = Client.GetAsync("veterinaria");
                 responseTask.Wait();
