@@ -1,4 +1,5 @@
 ﻿using MasVeterinarias.UI.Models;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,6 +12,12 @@ namespace MasVeterinarias.UI.Controllers
 {
     public class ServicioController : Controller
     {
+        private IWebHostEnvironment _enviroment;
+
+        public ServicioController(IWebHostEnvironment env)
+        {
+            _enviroment = env;
+        }
         public ActionResult Index()
         {
             IEnumerable<Servicio> Servicio = null;
@@ -41,11 +48,18 @@ namespace MasVeterinarias.UI.Controllers
             return View();
 
         }
+
         [HttpPost]
-        public ActionResult Create(Servicio servicio)
+        public async Task<ActionResult> Create(Servicio servicio)
         {
+            var filename = System.IO.Path.Combine(_enviroment.ContentRootPath,
+               "wwwroot", "Uploads", servicio.MyFile.FileName);
+
+            await servicio.MyFile.CopyToAsync(
+               new System.IO.FileStream(filename, System.IO.FileMode.Create));
             using (var Client = new HttpClient())
             {
+                servicio.Imagen = servicio.MyFile.FileName;
                 servicio.VeterinariaId = 1;
                 Client.BaseAddress = new Uri("https://localhost:44357/api/Servicio");
                 var posjob = Client.PostAsJsonAsync<Servicio>("servicio", servicio);
@@ -104,31 +118,36 @@ namespace MasVeterinarias.UI.Controllers
             return View(Servicio);
         }
 
-        public ActionResult Detalles(int id)
+        public ActionResult Detalles()
         {
-            Servicio Servicio = null;
-            using (var client = new HttpClient())
+            IEnumerable<Servicio> Servicio = null;
+            using (var Client = new HttpClient())
             {
-                client.BaseAddress = new Uri("https://localhost:44357/api/");
-                var responseTask = client.GetAsync("Servicio/" + id.ToString());
+
+                Client.BaseAddress = new Uri("https://localhost:44357/api/");
+                var responseTask = Client.GetAsync("Servicio");
                 responseTask.Wait();
 
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
-                    var readtask = result.Content.ReadAsAsync<Servicio>();
-                    readtask.Wait();
-                    Servicio = readtask.Result;
+                    var readjob = result.Content.ReadAsAsync<IList<Servicio>>();
+                    readjob.Wait();
+                    Servicio = readjob.Result;
                 }
-            }
 
+
+            }
             return View(Servicio);
         }
+
         public ActionResult Details(int id)
         {
             Servicio Servicio = null;
             using (var client = new HttpClient())
             {
+                
+               
                 client.BaseAddress = new Uri("https://localhost:44357/api/");
                 var responseTask = client.GetAsync("Servicio/" + id.ToString());
                 responseTask.Wait();

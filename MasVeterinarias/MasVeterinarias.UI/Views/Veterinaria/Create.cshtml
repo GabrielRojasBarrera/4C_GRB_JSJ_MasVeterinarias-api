@@ -7,102 +7,105 @@
 }
 
 <div class="container-xl">
-   
-        <div class="row">
-            <div class="col-md-8 mx-auto">
-                <div class="contact-form">
-                    <h1>¡Anunciate!</h1>
-                    <p class="hint-text">Complata el registro para comenzar a anunciarte como nunca antes.</p>
-                    <form asp-action="Create" asp-controller="Veterinaria" method="post" enctype="multipart/form-data">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="Escribe el Nombre">Nombre del Negocio</label>
-                                    <input asp-for="Nombre" type="text" class="form-control" id="inputFirstName" required>
-                                    <span asp-validation-for="Nombre" class="text-danger"></span>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="input-group-prepend">
-                                    <label for="Escribe el Nombre">Logotipo</label>
-                                </div>
 
-                                <div class="custom-file">
-                                    <label class="custom-file-label" for="customFile">Escoje tu imagen</label>
-                                    <input asp-for="MyFile" type="file" class="custom-file-input" id="customFile">
-                                    <span asp-validation-for="Imagen" class="text-danger"></span>
 
-                                </div>
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="contact-form">
+                <h1>¡Anunciate!</h1>
+                <p class="hint-text">Complata el registro para comenzar a anunciarte como nunca antes.</p>
+                <form asp-action="Create" asp-controller="Veterinaria" method="post" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="Escribe el Nombre">Nombre del Negocio</label>
+                                <input asp-for="Nombre" type="text" class="form-control" id="inputFirstName" required>
+                                <span asp-validation-for="Nombre" class="text-danger"></span>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="Escribe el Nombre">Representante</label>
-                                    <input asp-for="Representante" type="text" class="form-control" id="inputFirstName" required>
-                                    <span asp-validation-for="Representante" class="text-danger"></span>
-                                </div>
+                        <div class="col-sm-6">
+                            <div class="input-group-prepend">
+                                <label for="Escribe el Nombre">Logotipo</label>
                             </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="inputLastName">Telefono</label>
-                                    <input asp-for="Telefono" type="text" class="form-control" id="inputLastName" required>
-                                    <span asp-validation-for="Telefono" class="text-danger"></span>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="form-group">
-                            <label for="inputEmail">Direccion</label>
-                            <input asp-for="Direccion" type="text" class="form-control" id="inputAdress" required>
-                            <span asp-validation-for="Direccion" class="text-danger"></span>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group md-form md-outline">
-                                    <label for="default-picker">Hora de Apertura</label>
-                                    <input asp-for="HoraApertura" type="time" class="form-control" id="default-picker" required>
-                                    <span asp-validation-for="HoraApertura" class="text-danger"></span>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group md-form md-outline">
-                                    <label for="default-picker">Hora de Cierre</label>
-                                    <input asp-for="HoraCierre" type="time" class="form-control" id="default-picker" required>
-                                    <span asp-validation-for="HoraCierre" class="text-danger"></span>
-                                </div>
+                            <div class="custom-file">
+                                <input asp-for="MyFile" type="file" class="custom-file-input" id="customFile">
+                                <label class="custom-file-label" for="customFile">Escoje una Imagen</label>
+                                <span asp-validation-for="Imagen" class="text-danger"></span>
+
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="inputLastName">Dias Laborales</label>
-                            <select class="custom-select " asp-for="DiasLaborales" multiple>
-                                <option value="Lunes">Lunes</option>
-                                <option value="Martes">Martes</option>
-                                <option value="Miercoles">Miercoles</option>
-                                <option value="Miercoles">Jueves</option>
-                                <option value="Miercoles">Viernes</option>
-                                <option value="Miercoles">Sabado</option>
-                                <option value="Miercoles">Domingo</option>
-                            </select>
-                            <span asp-validation-for="DiasLaborales" class="text-danger"></span>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="Escribe el Nombre">Representante</label>
+                                <input asp-for="Representante" type="text" class="form-control" id="inputFirstName" required>
+                                <span asp-validation-for="Representante" class="text-danger"></span>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="inputMessage">Descripcion</label>
-                            <textarea asp-for="Descripcion" class="form-control" id="inputMessage" rows="5" required></textarea>
-                            <span asp-validation-for="Descripcion" class="text-danger"></span>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="inputLastName">Telefono</label>
+                                <input asp-for="Telefono" type="text" class="form-control" id="inputLastName" required>
+                                <span asp-validation-for="Telefono" class="text-danger"></span>
+                            </div>
                         </div>
-                        <input type="submit" class="btn btn-primary" value="Submit">
-                        <script>
-                            // Add the following code if you want the name of the file appear on select
-                            $(".custom-file-input").on("change", function () {
-                                var fileName = $(this).val().split("\\").pop();
-                                $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-                            });
-                        </script>
-                    </form>
-                </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputEmail">Direccion</label>
+                        <input asp-for="Direccion" type="text" class="form-control" id="inputAdress" required>
+                        <span asp-validation-for="Direccion" class="text-danger"></span>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group md-form md-outline">
+                                <label for="default-picker">Hora de Apertura</label>
+                                <input asp-for="HoraApertura" type="time" class="form-control" id="default-picker" required>
+                                <span asp-validation-for="HoraApertura" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group md-form md-outline">
+                                <label for="default-picker">Hora de Cierre</label>
+                                <input asp-for="HoraCierre" type="time" class="form-control" id="default-picker" required>
+                                <span asp-validation-for="HoraCierre" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputLastName">Dias Laborales</label>
+                        <select class="selectpicker" asp-for="DiasLaborales" multiple data-live-search="true">
+                            <option>Lunes</option>
+                            <option>Martes</option>
+                            <option>Miercoles</option>
+                            <option>Jueves</option>
+                            <option>Viernes</option>
+                            <option>Sabado</option>
+                            <option>Domingo</option>
+                        </select>
+                       
+                        <span asp-validation-for="DiasLaborales" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputMessage">Descripcion</label>
+                        <textarea asp-for="Descripcion" class="form-control" id="inputMessage" rows="5" required></textarea>
+                        <span asp-validation-for="Descripcion" class="text-danger"></span>
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="Submit">
+                </form>
             </div>
         </div>
-        
+    </div>
+
+    <script>
+        $(".custom-file-input").on("change", function () {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+        $('select').selectpicker();
+    </script>
+
 </div>
 

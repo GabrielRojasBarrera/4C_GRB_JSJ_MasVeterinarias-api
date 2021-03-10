@@ -5,94 +5,94 @@
     Layout = "_LayoutUser";
 }
 
-<div class="container">
-    
-    
-        <h1 class="mt-4 mb-3">
-            Hola Usuario
-
-        </h1>
-
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-                <a href="index.html">Usuario</a>
-            </li>
-            <li class="breadcrumb-item active">Historial de citas</li>
-        </ol>
-
-        <!-- Content Row -->
-        <div class="row">
-            <!-- Sidebar Column -->
-            <div class="col-lg-3 mb-4">
-                <div class="list-group">
-                    <a href="index.html" class="list-group-item">Mis datos</a>
-                    <a href="about.html" class="list-group-item">Historial de citas</a>
-                </div>
-            </div>
-            <!-- Content Column -->
-            <div class="col-lg-9 mb-4">
-                <h3>Historial de citas</h3>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Id)
-                            </th>
-                            <th scope="col">Servicio</th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Estatus)
-                            </th>
-                            
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
+<div class="container min-vh-100">
 
 
-                        <tr>
-                            <td>1</td>
-                            <td>Baño Perro Grande</td>
-                            <td>Aceptada</td>
+    <h1 class="mt-4 mb-3">
+        Hola Usuario
 
-                            <td>
+    </h1>
 
-                                <a class="btn btn-primary">Detalles</a>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="index.html">Usuario</a>
+        </li>
+        <li class="breadcrumb-item active">Historial de citas</li>
+    </ol>
 
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>2</td>
-                            <td>Baño Gato</td>
-                            <td>Rechazada</td>
-
-                            <td>
-
-                                <a class="btn btn-primary">Detalles</a>
-
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>3</td>
-                            <td>Lavado de dientes Perro</td>
-                            <td>Rechazada</td>
-
-                            <td>
-
-                                <a class="btn btn-primary">Detalles</a>
-
-                            </td>
-                        </tr>
-
-                    </tbody>
-                </table>
-
-               
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Sidebar Column -->
+        <div class="col-lg-3 mb-4">
+            <div class="list-group">
+                <a href="index.html" class="list-group-item">Mis datos</a>
+                <a href="about.html" class="list-group-item">Historial de citas</a>
             </div>
         </div>
+        <!-- Content Column -->
+        <div class="col-lg-9 mb-4">
+            <h3>Historial de citas</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Id)
+                        </th>
+                        <th scope="col">Servicio</th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Estatus)
+                        </th>
 
-    
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+
+                    <tr>
+                        <td>1</td>
+                        <td>Baño Perro Grande</td>
+                        <td>Aceptada</td>
+
+                        <td>
+
+                            <a class="btn btn-primary">Detalles</a>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>2</td>
+                        <td>Baño Gato</td>
+                        <td>Rechazada</td>
+
+                        <td>
+
+                            <a class="btn btn-primary">Detalles</a>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>3</td>
+                        <td>Lavado de dientes Perro</td>
+                        <td>Rechazada</td>
+
+                        <td>
+
+                            <a class="btn btn-primary">Detalles</a>
+
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+
+
     <!-- Page Heading/Breadcrumbs -->
     <!-- /.row -->
 

@@ -1,17 +1,17 @@
 ﻿@model MasVeterinarias.UI.Models.Usuario
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "CreateV";
     Layout = "_LayoutRegister";
 }
 
 <div class="signup-form">
     @using (Html.BeginForm())
     {
-        <form asp-action="Create"  method="post">
+        <form asp-action="Create" method="post">
             <h2>Resgistrate</h2>
             <p class="hint-text">Create your account. It's free and only takes a minute.</p>
-            
+
             <div class="form-group">
                 <input asp-for="Email" class="form-control" type="email" name="Email" placeholder="Email" required="required" />
                 <span asp-validation-for="Email" class="text-danger"></span>
@@ -24,18 +24,16 @@
                 <input asp-for="Password" type="password" class="form-control" name="confirm_password" placeholder="Confirma Password" required="required">
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
-           
+
             <div class="form-group">
-                <label class="form-check-label"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
+                <label class="form-check-label"><input type="checkbox" required="required"> I accept the <a class="text-danger" href="#">Terms of Use</a> &amp; <a class="text-danger" href="#">Privacy Policy</a></label>
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-success btn-lg btn-block" >Registrarse</button>
+                <button type="submit" class="btn btn-danger btn-lg btn-block">Registrarse</button>
             </div>
-            <div class="text-center">¿Ya tienes cuenta? <a asp-controller="Login" asp-action="Index"> Inicia sesión</a></div>
+            <div class="text-center ">¿Ya tienes cuenta? <a class="text-danger" asp-controller="Login" asp-action="Index"> Inicia sesión</a></div>
         </form>
 
     }
 
 </div>
-
-

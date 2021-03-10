@@ -12,9 +12,6 @@ namespace MasVeterinarias.UI.Controllers
     public class CitaController : Controller
     {
         public string url = "https://localhost:44357/api/Cita";
-
-
-
         public IActionResult Index()
         {
             //IEnumerable<Cita> cita = null;
@@ -40,20 +37,38 @@ namespace MasVeterinarias.UI.Controllers
             return View(/*cita*/);
         }
 
-        
+
         public async Task<JsonResult> GetEvents()
         {
             var Client = new HttpClient();
             var json = await Client.GetStringAsync(url);
             var Citas = JsonConvert.DeserializeObject<List<Cita>>(json);
-           
-            return new JsonResult(Citas.ToArray());
+
+            var events = Citas.ConvertAll(e => new
+            {
+                id = e.Id,
+                start = e.Fecha,
+                petname = e.NombreMascota,
+                clientid = e.ClienteId,
+                title = e.ServicioId,
+                hours = e.Hora,
+                status = e.Estatus
+            }).ToArray();
+            return new JsonResult(events);
         }
 
 
         public ActionResult Create()
         {
-            return View();
+            if (HttpContext.Session.GetString("Id") != null)
+            {
+                return View();
+
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
         }
 
         [HttpPost]

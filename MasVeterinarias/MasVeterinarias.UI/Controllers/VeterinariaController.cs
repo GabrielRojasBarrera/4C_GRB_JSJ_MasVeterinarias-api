@@ -1,12 +1,9 @@
 ﻿using MasVeterinarias.UI.Models;
-using MasVeterinarias.UI.Models.ViewModel;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -47,15 +44,9 @@ namespace MasVeterinarias.UI.Controllers
         //POST: Usuario
         public IActionResult Create()
         {
-            if (HttpContext.Session.GetString("Id") != null)
-            {
-
+            
                 return View();
-            }
-            else
-            {
-                return RedirectToAction("Index", "Login");
-            }
+            
         }
 
         [HttpPost]
@@ -68,7 +59,7 @@ namespace MasVeterinarias.UI.Controllers
                new System.IO.FileStream(filename, System.IO.FileMode.Create));
             using (var Client = new HttpClient())
             {
-
+               
                 veterinaria.Imagen = veterinaria.MyFile.FileName;
                 veterinaria.UsuarioId = int.Parse(HttpContext.Session.GetString("Id"));
                 Client.BaseAddress = new Uri("https://localhost:44357/api/Veterinaria");
@@ -166,9 +157,6 @@ namespace MasVeterinarias.UI.Controllers
             using (var client = new HttpClient())
             {
               
-                
-              
-                
                 id = int.Parse(HttpContext.Session.GetString("Id"));
                 client.BaseAddress = new Uri("https://localhost:44357/api/");
                 var responseTask = client.GetAsync("veterinaria/" + id.ToString());
@@ -233,16 +221,7 @@ namespace MasVeterinarias.UI.Controllers
 
         
 
-        public async Task<IActionResult> Upload(UploadModel upload)
-        {
-
-            var fileName = System.IO.Path.Combine(_enviroment.ContentRootPath,
-                "upload", upload.MyFile.FileName);
-
-            await upload.MyFile.CopyToAsync(new System.IO.FileStream(fileName, System.IO.FileMode.Create));
-
-            return RedirectToAction("Upload");
-        }
+        
 
 
     }

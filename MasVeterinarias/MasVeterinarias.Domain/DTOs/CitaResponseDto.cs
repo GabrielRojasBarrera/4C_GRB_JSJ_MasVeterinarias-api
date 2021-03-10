@@ -13,5 +13,7 @@ namespace MasVeterinarias.Domain.DTOs
         public string Hora { get; set; }
         public DateTime? Fecha { get; set; }        
         public int ServicioId { get; set; }
+
+        public string Estatus { get; set; }
     }
 }

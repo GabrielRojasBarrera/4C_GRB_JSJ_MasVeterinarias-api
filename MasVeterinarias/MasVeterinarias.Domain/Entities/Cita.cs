@@ -19,6 +19,8 @@ namespace MasVeterinarias.Domain.Entities
         public DateTime? Fecha { get; set; }               
         public int ServicioId { get; set; }
 
+        public string Estatus { get; set; }
+
         public virtual Cliente Cliente { get; set; }
         public virtual Servicio Servicio { get; set; }
         public virtual Veterinaria Veterinaria { get; set; }

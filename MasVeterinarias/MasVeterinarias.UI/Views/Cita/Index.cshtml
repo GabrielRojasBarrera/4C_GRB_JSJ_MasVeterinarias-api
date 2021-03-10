@@ -30,24 +30,26 @@
                     listMonth: { buttonText: 'lista Mensual' }
                 },
 
-                initialView: 'listMonth',
+                initialView: 'listDay',
                 navLinks: true, // can click day/week names to navigate views
                 editable: true,
                 dayMaxEvents: true,
                 // allow "more" link when too many events
-                eventClick: function (info) {                   
+                eventClick: function (info) {
                     console.log(info);
                     console.log(info.event.id);
                     console.log(info.event.title);
-                    console.log(info.event.extendedProps.ClienteId);
-                    console.log(info.event.extendedProps.NombreMascota);                    
+                    console.log(info.event.extendedProps.clientid);
+                    console.log(info.event.extendedProps.petname);
+                    console.log(info.event.extendedProps.hours);
                     console.log(info.event.start);
                     console.log(info.event.end);
                     console.log(info.event.extendedProps.status);
 
                     $('#txtId').val(info.event.id);
-                    $('#txtClient').val(info.event.extendedProps.ClienteId);
-                    $('#txtPet').val(info.event.extendedProps.NombreMascota);
+                    $('#txtClient').val(info.event.extendedProps.clientid);
+                    $('#txtPet').val(info.event.extendedProps.petname);
+                    $('#txtStatus').val(info.event.extendedProps.status);
                     $('#txtService').val(info.event.title);
 
                     mes = (info.event.start.getMonth() + 1);
@@ -55,66 +57,22 @@
                     anio = (info.event.start.getFullYear());
                     mes = (mes < 10) ? "0" + mes : mes;
                     dia = (dia < 10) ? "0" + dia : dia;
-                   
 
-                    minutos = info.event.start.getMinutes(); 
-                    hora = info.event.start.getHours();
 
-                    minutos = (minutos < 10) ? "0" + minutos : minutos;
-                    hora = (hora < 10) ? "0" + hora : hora;
+                    //minutos = info.event.extendedProps.hours.getMinutes();
+                    //hora = info.event.extendedProps.hours.getHours();
 
-                    horario = (hora+ ":" +minutos );
+                    //minutos = (minutos < 10) ? "0" + minutos : minutos;
+                    //hora = (hora < 10) ? "0" + hora : hora;
+
+                    //horario = (hora+ ":" +minutos );
 
                     $('#txtFecha').val(anio+"-"+mes+"-"+dia);
-                    $('#txtHora').val(horario);
+                    $('#txtHora').val(info.event.extendedProps.hours);
                     $('#exampleModal').modal();
                 },
 
-                events: [
-                    {
-                        id: 1,
-                        title: 'Baño Perro Grande',
-                        ClienteId: 'Gabriel Rojas',
-                        NombreMascota: 'Firulais',
-                        start: '2021-02-18T12:30:00',
-                        ServicioId: 1,
-                    },
-                    {
-                        id: 2,
-                        title: 'Baño Gato',
-                        ClienteId: 'Gabriel Rojas',
-                        NombreMascota: 'Firulais',
-                        start: '2021-02-18T14:00:00',
-                        ServicioId: 1,                   },
-                    {
-                        id: 3,
-                        title: 'Lavado de dientes Perro',
-                        ClienteId: 'Gabriel Rojas',
-                        NombreMascota: 'Firulais',
-                        start: '2021-02-19T16:30:00',
-                        ServicioId: 1,
-                    },
-
-                    {
-                        id: 4,
-                        title: 'Lavado de dientes Perro',
-                        ClienteId: 'Jorge',
-                        NombreMascota: 'Firulais',
-                        start: '2021-02-20T08:00:00',
-                        ServicioId: 1,
-                    },
-                    {
-                        id: 5,
-                        title: 'Baño Perro Grande',
-                        ClienteId: 'Gabriel',
-                        NombreMascota: 'Firulais',
-                        start: '2021-02-24T10:00:00',
-                        ServicioId: 1,
-                    },
-                    
-                ]
-
-              
+                events: '@Url.Action("GetEvents", "Cita")'
 
             });
 
@@ -122,7 +80,7 @@
             calendar.render();
 
             $('#btnEdit').click(function(){
-                
+
             });
 
             function GetDataUI(method)
@@ -151,13 +109,11 @@
             padding: 0px;
             font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
             font-size: 14px;
-           
         }
 
         #calendar {
             max-width: 1100px;
             margin: 0 auto;
-            
         }
     </style>
 </head>
@@ -180,10 +136,10 @@
                         <input type="text" name="txtId" id="txtId">
                         <br />
                     </div>
-                    
+
                     <div class="form-row">
                         <div class="form-group col-md-8">
-                            <label>Cliente:</label>  
+                            <label>Cliente:</label>
                             <input readonly type="text" class="form-control" name="txtClient" id="txtClient">
                         </div>
                         <div class="form-group col-md-4">
@@ -202,21 +158,25 @@
                             <label>Hora:</label>
                             <input readonly type="time" class="form-control" name="txtHora" id="txtHora">
                         </div>
-                        <div class="d-none">
-                            <div class="form-group col-md-12">
-                                <label>Status:</label>
-                                <input type="text" class="form-control" name="txtStatus" id="txtStatus">
-                            </div>
-
-                        </div>
                         
-                    </div> 
+                        <div class="form-group col-md-12">
+                            <label>Status:</label>
+                            
+                            <select class="form-control" name="txtStatus" id="txtStatus">
+                                <option>Aceptada</option>
+                                <option>Rechazada</option>                                
+                            </select>
+                            
+                        </div>
 
-                    
+                        
+
+                    </div>
+
+
                 </div>
                 <div class="modal-footer">
-                    <button id="btnEdit" class="btn btn-primary">Aceptar</button>
-                    <button id="btnDelete"class="btn btn-danger">Rechazar</button>
+                    <button type="button" asp-controller="Home" asp-action="VIndex"  id="btnEdit" class="btn btn-primary " data-dismiss="modal">Guardar</button>                    
                 </div>
             </div>
         </div>

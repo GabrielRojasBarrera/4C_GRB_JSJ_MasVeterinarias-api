@@ -41,8 +41,22 @@ namespace MasVeterinarias.UI.Controllers
             return View(veterinaria);
         }
 
+        //[HttpPost]
+        //public ActionResult Index(VeterinariaViewModel model, veterinaria veterinaria)
+        //{
 
-       
+        //    if (!string.IsNullOrEmpty(model.Text))
+        //    {
+        //        model.Veterinarias = model.Veterinarias.FullTextSearchQuery(model.Text);
+        //    }
+        //    else
+        //    {
+        //        model.Veterinarias = model.Veterinarias;
+        //    }
+        //    return View(model);
+
+        //}
+
 
         public IActionResult UserIndex()
         {

@@ -1,4 +1,5 @@
 ﻿using MasVeterinarias.UI.Models;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,13 @@ namespace MasVeterinarias.UI.Controllers
 {
     public class ProductoController : Controller
     {
+        private IWebHostEnvironment _enviroment;
+
+        public ProductoController(IWebHostEnvironment env)
+        {
+            _enviroment = env;
+        }
+
         public ActionResult Index()
         {
             IEnumerable<Producto> Producto = null;
@@ -41,13 +49,19 @@ namespace MasVeterinarias.UI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Producto Producto)
+        public async Task<ActionResult> Create(Producto producto)
         {
+            var filename = System.IO.Path.Combine(_enviroment.ContentRootPath,
+                "wwwroot", "Uploads", producto.MyFile.FileName);
+
+            await producto.MyFile.CopyToAsync(
+               new System.IO.FileStream(filename, System.IO.FileMode.Create));
             using (var Client = new HttpClient())
             {
-                Producto.VeterinariaId = 1;
+                producto.Imagen = producto.MyFile.FileName;
+                producto.VeterinariaId = 1;
                 Client.BaseAddress = new Uri("https://localhost:44357/api/Producto");
-                var posjob = Client.PostAsJsonAsync<Producto>("Producto", Producto);
+                var posjob = Client.PostAsJsonAsync<Producto>("Producto", producto);
                 posjob.Wait();
 
                 var postresult = posjob.Result;
@@ -55,7 +69,7 @@ namespace MasVeterinarias.UI.Controllers
                     return RedirectToAction("Index");
             }
             ModelState.AddModelError(string.Empty, "Ha ocurrido un error");
-            return View(Producto);
+            return View(producto);
         }
 
         // GET: bY Id
@@ -102,25 +116,28 @@ namespace MasVeterinarias.UI.Controllers
             return View(Producto);
         }
 
-        public ActionResult Detalles(int id)
+        public ActionResult Detalles()
         {
-            Producto Producto = null;
-            using (var client = new HttpClient())
+            IEnumerable<Producto> Producto = null;
+            using (var Client = new HttpClient())
             {
-                client.BaseAddress = new Uri("https://localhost:44357/api/");
-                var responseTask = client.GetAsync("Producto/" + id.ToString());
+                Client.BaseAddress = new Uri("https://localhost:44357/api/");
+                var responseTask = Client.GetAsync("Producto");
                 responseTask.Wait();
 
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
-                    var readtask = result.Content.ReadAsAsync<Producto>();
-                    readtask.Wait();
-                    Producto = readtask.Result;
+                    var readjob = result.Content.ReadAsAsync<IList<Producto>>();
+                    readjob.Wait();
+                    Producto = readjob.Result;
                 }
-            }
 
+
+            }
             return View(Producto);
+
+
         }
 
 

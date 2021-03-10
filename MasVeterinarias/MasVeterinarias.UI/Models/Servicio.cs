@@ -1,4 +1,6 @@
-﻿namespace MasVeterinarias.UI.Models
+﻿using Microsoft.AspNetCore.Http;
+
+namespace MasVeterinarias.UI.Models
 {
     public class Servicio
     {
@@ -13,6 +15,8 @@
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
         public string Raza { get; set; }
+
+        public IFormFile MyFile { get; set; }
 
     }
 }

@@ -5,7 +5,7 @@
     Layout = "_LayoutUser";
 }
 
-<div class="container">
+<div class="container min-vh-100">
     @using (Html.BeginForm())
     {
         <h1 class="mt-4 mb-3">
@@ -25,8 +25,8 @@
             <!-- Sidebar Column -->
             <div class="col-lg-3 mb-4">
                 <div class="list-group">
-                    <a href="index.html" class="list-group-item">Mis datos</a>
-                    <a href="about.html" class="list-group-item">Historial de citas</a>
+                    <a asp-controller="Cliente" asp-action="Details" class="list-group-item">Mis datos</a>
+                    @*<a href="about.html" class="list-group-item">Historial de citas</a>*@
                 </div>
             </div>
             <!-- Content Column -->
@@ -68,7 +68,7 @@
             </div>
         </div>
 
-     }
+    }
     <!-- Page Heading/Breadcrumbs -->
     <!-- /.row -->
 

@@ -1,187 +1,41 @@
-﻿@model MasVeterinarias.UI.Models.Producto
+﻿@model IEnumerable<MasVeterinarias.UI.Models.Producto>
 
 @{
     ViewData["Title"] = "Detalles";
     Layout = "_LayoutV";
 }
 
-}
 
-<div class="container">
+
+<div class="container min-vh-100">
 
     <div class="row">
 
-        <div class="col-lg-3">
 
-
-
-            <section class="my-4">
-
-                <h6 class="font-weight-bold mb-3">@Html.DisplayFor(model => model.Etapa)</h6>
-
-                <div class="form-check pl-0 mb-3">
-                    <input type="checkbox" class="form-check-input filled-in" id="new">
-                    <label class="form-check-label small text-uppercase card-link-secondary" for="new">Cachorros</label>
-                </div>
-                <div class="form-check pl-0 mb-3">
-                    <input type="checkbox" class="form-check-input filled-in" id="used">
-                    <label class="form-check-label small text-uppercase card-link-secondary" for="used">Adultos</label>
-                </div>
-
-
-            </section>
-            <section class="my-4">
-
-                <h6 class="font-weight-bold mb-3">@Html.DisplayFor(model => model.Especie)</h6>
-
-                <div class="form-check pl-0 mb-3">
-                    <input type="checkbox" class="form-check-input filled-in" id="new">
-                    <label class="form-check-label small text-uppercase card-link-secondary" for="new">perros</label>
-                </div>
-                <div class="form-check pl-0 mb-3">
-                    <input type="checkbox" class="form-check-input filled-in" id="used">
-                    <label class="form-check-label small text-uppercase card-link-secondary" for="used">Gatos</label>
-                </div>
-                <div class="form-check pl-0 mb-3">
-                    <input type="checkbox" class="form-check-input filled-in" id="collectible">
-                    <label class="form-check-label small text-uppercase card-link-secondary" for="collectible">Aves</label>
-                </div>
-                <div class="form-check pl-0 mb-3 pb-1">
-                    <input type="checkbox" class="form-check-input filled-in" id="renewed">
-                    <label class="form-check-label small text-uppercase card-link-secondary" for="renewed">peces</label>
-                </div>
-
-            </section>
-            <section class="my-4">
-
-                <h6 class="font-weight-bold mb-3">@Html.DisplayFor(model => model.Raza)</h6>
-
-                <div class="form-check pl-0 mb-3">
-                    <input type="checkbox" class="form-check-input filled-in" id="new">
-                    <label class="form-check-label small text-uppercase card-link-secondary" for="new">Maltes</label>
-                </div>
-                <div class="form-check pl-0 mb-3">
-                    <input type="checkbox" class="form-check-input filled-in" id="used">
-                    <label class="form-check-label small text-uppercase card-link-secondary" for="used">french</label>
-                </div>
-                <div class="form-check pl-0 mb-3">
-                    <input type="checkbox" class="form-check-input filled-in" id="collectible">
-                    <label class="form-check-label small text-uppercase card-link-secondary" for="collectible">labrador</label>
-                </div>
-                <div class="form-check pl-0 mb-3 pb-1">
-                    <input type="checkbox" class="form-check-input filled-in" id="renewed">
-                    <label class="form-check-label small text-uppercase card-link-secondary" for="renewed">chihuahua</label>
-                </div>
-
-            </section>
-
-
-
-
-        </div>
         <!-- /.col-lg-3 -->
 
         <div class="col-lg-9">
 
-
-
             <div class="row">
-
-                <div class="col-lg-4 col-md-6 my-4">
-                    <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Pelota para perro</a>
-                            </h4>
-                            <h5>$50</h5>
-                            <p class="card-text">Pelota para jugar</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 my-4">
-                    <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Jaula para aves</a>
-                            </h4>
-                            <h5>$1020</h5>
-                            <p class="card-text">jaula de aves</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                @foreach (var item in Model)
+                {
+                    <div class="col-lg-4 col-md-6 my-5">
+                        <div class="card h-100">
+                            <a><img class="card-img-top" src="~/Uploads/@item.Imagen" alt=""></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="/Servicio/Index/@item.Id"> @Html.DisplayFor(modelItem => item.Nombre)</a>
+                                </h4>
+                                <h5> @Html.DisplayFor(modelItem => item.Precio)</h5>
+                                <p class="card-text">@Html.DisplayFor(modelItem => item.Descripcion)</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-lg-4 col-md-6 my-4">
-                    <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Comida de perro adulto</a>
-                            </h4>
-                            <h5>$300</h5>
-                            <p class="card-text">comida adulto</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Carnaza de perro</a>
-                            </h4>
-                            <h5>$200</h5>
-                            <p class="card-text">carnaza</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">hueso juguete perro</a>
-                            </h4>
-                            <h5>$100</h5>
-                            <p class="card-text">juguete de perro.</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Pelota para perro</a>
-                            </h4>
-                            <h5>$200</h5>
-                            <p class="card-text">juguete para perro</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                        </div>
-                    </div>
-                </div>
+                }
 
             </div>
             <!-- /.row -->

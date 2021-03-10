@@ -6,7 +6,7 @@
 }
 
 <!-- Page Content -->
-<div class="container">
+<div class="container min-vh-100">
 
     <!-- Page Heading/Breadcrumbs -->
     <h1 class="mt-4 mb-3">
@@ -21,67 +21,63 @@
         <li class="breadcrumb-item active">Agendar</li>
     </ol>
 
-    @using (Html.BeginForm())
-    {
-        <div class="row">
-            <div class="col-lg-8 mb-4">
-                
-                <form name="sentMessage" id="contactForm" novalidate>
-                    <div class="control-group form-group">
-                        <div class="controls">
-                            <label asp-for="NombreMascota" class="control-label"></label>
-                            <input asp-for="NombreMascota" class="form-control" />
-                            <span asp-validation-for="NombreMascota" class="text-danger"></span>
-                        </div>
-                    </div>
-                    <div class="control-group form-group">
-                        <div class="controls">
-                            <label asp-for="ServicioId" class="control-label">Servicio</label>
-                            <select class="form-control" asp-for="ServicioId">
-                                <option>1</option>
-                                <option>Baño Gato</option>
-                                <option>Lavado de dientes Perro</option>
-                            </select>
-                            <span asp-validation-for="ServicioId" class="text-danger"></span>
-                        </div>
-                    </div>
-                    <div class="control-group form-group">
-                        <div class="controls">
-                            <label asp-for="Fecha" class="control-label"></label>
-                            <input asp-for="Fecha" type="date" class="form-control" />
-                            <span asp-validation-for="Fecha" class="text-danger"></span>
-                        </div>
-                    </div>
-                    <div class="control-group form-group">
-                        <div class="controls">
-                            <label asp-for="Hora" class="control-label"></label>
-                            <select class="form-control" type="time" asp-for="Hora">
-                                <option>10:00:00</option>
-                                
-                                <option>11:00:00</option>
-                                <option>11:30:00</option>
-                                <option>12:00:00</option>
-                                
-                                <option>13:00:00</option>
-                                <option>13:30:00</option>                                
-                                <option>14:30:00</option>
-                                
-                                <option>15:30:00</option>
-                                
-                            </select>
-                            <span asp-validation-for="Hora" class="text-danger"></span>
-                        </div>
-                    </div>
+    <div class="row">
+        <div class="col-lg-8 mb-4">
 
-                    <div id="success"></div>
-                    <!-- For success/fail messages -->
-                    <input type="submit" value="Create" class="btn btn-primary" />
-                </form>
-            </div>
+            <form asp-action="Create" asp-controller="Cita" method="post">
+                <div class="control-group form-group">
+                    <div class="controls">
+                        <label asp-for="NombreMascota" class="control-label"></label>
+                        <input asp-for="NombreMascota" class="form-control" />
+                        <span asp-validation-for="NombreMascota" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="control-group form-group">
+                    <div class="controls">
+                        <label asp-for="ServicioId" class="control-label">Servicio</label>
+                        <select class="form-control" asp-for="ServicioId">
+                            <option>1</option>
+                        </select>
+                        <span asp-validation-for="ServicioId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="control-group form-group">
+                    <div class="controls">
+                        <label asp-for="Fecha" class="control-label"></label>
+                        <input asp-for="Fecha" type="date" class="form-control" />
+                        <span asp-validation-for="Fecha" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="control-group form-group">
+                    <div class="controls">
+                        <label asp-for="Hora" class="control-label"></label>
+                        <select class="form-control" type="time" asp-for="Hora">
+                            <option>10:00:00</option>
 
+                            <option>11:00:00</option>
+                            <option>11:30:00</option>
+                            <option>12:00:00</option>
+
+                            <option>13:00:00</option>
+                            <option>13:30:00</option>
+                            <option>14:30:00</option>
+
+                            <option>15:30:00</option>
+
+                        </select>
+                        <span asp-validation-for="Hora" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div id="success"></div>
+                <!-- For success/fail messages -->
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </form>
         </div>
 
-    }
+    </div>
+
+
 
     <!-- /.row -->
 

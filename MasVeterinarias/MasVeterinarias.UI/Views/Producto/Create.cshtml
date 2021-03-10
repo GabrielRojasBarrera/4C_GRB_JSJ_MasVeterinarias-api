@@ -30,7 +30,7 @@
                 <a href="services.html" class="list-group-item">Categorias</a>
                 <a asp-controller="Servicio" asp-action="Index" class="list-group-item ">Servicios</a>
                 <a asp-controller="Producto" asp-action="Index" class="list-group-item active">Productos</a>
-                
+
 
             </div>
         </div>
@@ -38,96 +38,105 @@
         <div class="col-lg-9 mb-4">
             <h3>Añadir un nuevo Producto</h3>
 
-            @using (Html.BeginForm())
-            {
-
-        <form name="sentMessage" id="contactForm" novalidate>
-            <div class="control-group form-group">
-                <div class="controls">
-                    <label>Nombre del Producto:</label>
-                    <input asp-for="Nombre" type="text" class="form-control" id="name" required data-validation-required-message="Porfavor escriba un Nombre.">
-                    <span asp-validation-for="Nombre" class="text-danger"></span>
-                    <p class="help-block"></p>
+            <form asp-action="Create" asp-controller="Producto" method="post" enctype="multipart/form-data">
+                <div class="control-group form-group">
+                    <div class="controls">
+                        <label>Nombre del Producto:</label>
+                        <input asp-for="Nombre" type="text" class="form-control" id="name" required data-validation-required-message="Porfavor escriba un Nombre.">
+                        <span asp-validation-for="Nombre" class="text-danger"></span>
+                        <p class="help-block"></p>
+                    </div>
                 </div>
-            </div>
-            <div class="control-group form-group">
-                <div class="controls">
-                    <label>Marca:</label>
-                    <input asp-for="Marca" type="text" class="form-control" id="name" required data-validation-required-message="Dato Invalido.">
-                    <span asp-validation-for="Marca" class="text-danger"></span>
+                <div class="control-group form-group">
+                    <div class="controls">
+                        <label>Marca:</label>
+                        <input asp-for="Marca" type="text" class="form-control" id="name" required data-validation-required-message="Dato Invalido.">
+                        <span asp-validation-for="Marca" class="text-danger"></span>
 
+                    </div>
                 </div>
-            </div>
-            <div class="control-group form-group">
-                <div class="controls">
-                    <label>Especie:</label>
-                    <input asp-for="Especie" type="text" class="form-control" id="name" required data-validation-required-message="Porfavor escriba una Especie.">
-                    <span asp-validation-for="Especie" class="text-danger"></span>
-                    <p class="help-block"></p>
+                <div class="control-group form-group">
+                    <label>Imagen:</label>
+                    <div class="input-group mb-3">
+                        <div class="custom-file">
+                            <input asp-for="MyFile" type="file" class="custom-file-input" id="customFile">
+                            <label class="custom-file-label" for="customFile">Elige una imagen</label>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="control-group form-group">
-                <div class="controls">
-                    <label>Raza:</label>
-                    <input asp-for="Raza" type="text" class="form-control" id="name" required data-validation-required-message="Porfavor escriba una Raza.">
-                    <span asp-validation-for="Raza" class="text-danger"></span>
-
+                <div class="control-group form-group">
+                    <div class="controls">
+                        <label>Especie:</label>
+                        <input asp-for="Especie" type="text" class="form-control" id="name" required data-validation-required-message="Porfavor escriba una Especie.">
+                        <span asp-validation-for="Especie" class="text-danger"></span>
+                        <p class="help-block"></p>
+                    </div>
                 </div>
-            </div>
-            <div class="control-group form-group">
-                <div class="controls">
-                    <label>Etapa:</label>
-                    <input asp-for="Etapa" type="text" class="form-control" id="name" required data-validation-required-message="Porfavor escriba una Raza.">
-                    <span asp-validation-for="Etapa" class="text-danger"></span>
+                <div class="control-group form-group">
+                    <div class="controls">
+                        <label>Raza:</label>
+                        <input asp-for="Raza" type="text" class="form-control" id="name" required data-validation-required-message="Porfavor escriba una Raza.">
+                        <span asp-validation-for="Raza" class="text-danger"></span>
 
+                    </div>
                 </div>
-            </div>
-            <div class="control-group form-group">
-                <div class="controls">
-                    <label>Descripcion:</label>
-                    <textarea asp-for="Descripcion" type="text" rows="5" cols="100" class="form-control" id="message" required data-validation-required-message="Porfavor escriba una Descripcion" maxlength="999" style="resize:none"></textarea>
-                    <span asp-validation-for="Descripcion" class="text-danger"></span>
+                <div class="control-group form-group">
+                    <div class="controls">
+                        <label>Etapa:</label>
+                        <input asp-for="Etapa" type="text" class="form-control" id="name" required data-validation-required-message="Porfavor escriba una Raza.">
+                        <span asp-validation-for="Etapa" class="text-danger"></span>
+
+                    </div>
                 </div>
-            </div>
-            <div class="control-group form-group">
-                <div class="controls">
-                    <label>Detalles:</label>
-                    <textarea asp-for="Detalles" type="text" rows="5" cols="100" class="form-control" id="message" required data-validation-required-message="Porfavor escriba los Detalles" maxlength="999" style="resize:none"></textarea>
-                    <span asp-validation-for="Detalles" class="text-danger"></span>
+                <div class="control-group form-group">
+                    <div class="controls">
+                        <label>Descripcion:</label>
+                        <textarea asp-for="Descripcion" type="text" rows="5" cols="100" class="form-control" id="message" required data-validation-required-message="Porfavor escriba una Descripcion" maxlength="999" style="resize:none"></textarea>
+                        <span asp-validation-for="Descripcion" class="text-danger"></span>
+                    </div>
                 </div>
-            </div>
-            <div class="control-group form-group">
-                <div class="controls">
-                    <label>Precio:</label>
-                    <input asp-for="Precio" type="number" class="form-control" id="name" required data-validation-required-message="Porfavor escriba un Precio.">
-                    <span asp-validation-for="Precio" class="text-danger"></span>
-
+                <div class="control-group form-group">
+                    <div class="controls">
+                        <label>Detalles:</label>
+                        <textarea asp-for="Detalles" type="text" rows="5" cols="100" class="form-control" id="message" required data-validation-required-message="Porfavor escriba los Detalles" maxlength="999" style="resize:none"></textarea>
+                        <span asp-validation-for="Detalles" class="text-danger"></span>
+                    </div>
                 </div>
-            </div>
-            <div class="control-group form-group">
-                <div class="controls">
-                    <label>Stock:</label>
-                    <input asp-for="Stock" type="number" class="form-control" id="name" required data-validation-required-message="Porfavor Seleccione la Dsiponibilidad.">
+                <div class="control-group form-group">
+                    <div class="controls">
+                        <label>Precio:</label>
+                        <input asp-for="Precio" type="number" class="form-control" id="name" required data-validation-required-message="Porfavor escriba un Precio.">
+                        <span asp-validation-for="Precio" class="text-danger"></span>
 
-                    <span asp-validation-for="Stock" class="text-danger"></span>
-
-
+                    </div>
                 </div>
-            </div>
+                <div class="control-group form-group">
+                    <div class="controls">
+                        <label>Stock:</label>
+                        <input asp-for="Stock" type="number" class="form-control" id="name" required data-validation-required-message="Porfavor Seleccione la Dsiponibilidad.">
 
-            <div id="success"></div>
-            <!-- For success/fail messages -->
-            <button type="submit" class="btn btn-primary" id="sendMessageButton" >Crear</button>
-            <button type="button" asp-controller="Producto" asp-action="Index" class="btn btn-danger" onclick="alert('¿Estas seguro de cancelar el Registro?')">Cancelar</button>
-        </form>
+                        <span asp-validation-for="Stock" class="text-danger"></span>
 
-            }
 
+                    </div>
+                </div>
+
+                <div id="success"></div>
+                <!-- For success/fail messages -->
+                <button type="submit" class="btn btn-primary" id="sendMessageButton">Crear</button>
+                <button type="button" asp-controller="Producto" asp-action="Index" class="btn btn-danger" onclick="alert('¿Estas seguro de cancelar el Registro?')">Cancelar</button>
+            </form>
 
 
         </div>
     </div>
     <!-- /.row -->
+    <script>
+        $(".custom-file-input").on("change", function () {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+    </script>
 
 </div>
 

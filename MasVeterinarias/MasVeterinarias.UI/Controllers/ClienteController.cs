@@ -2,6 +2,7 @@
 using MasVeterinarias.UI.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -13,8 +14,12 @@ namespace MasVeterinarias.UI.Controllers
 {
     public class ClienteController : Controller
     {
-        HttpClient client = new HttpClient();
-        public string url = "https://localhost:44357/api/Usuario";
+        private readonly ILogger<ClienteController> _logger;
+
+        public ClienteController(ILogger<ClienteController> logger)
+        {
+            _logger = logger;
+        }
         public ActionResult Index()
         {
             IEnumerable<Cliente> clientes = null;
@@ -48,14 +53,14 @@ namespace MasVeterinarias.UI.Controllers
             using (var Client = new HttpClient())
             {
 
-                cliente.UsuarioId = 1;
+                cliente.UsuarioId = int.Parse(HttpContext.Session.GetString("Id"));
                 Client.BaseAddress = new Uri("https://localhost:44357/api/Cliente");
                 var posjob1 = Client.PostAsJsonAsync<Cliente>("cliente", cliente);
                 posjob1.Wait();
 
                 var postresult = posjob1.Result;               
                 if (postresult.IsSuccessStatusCode )
-                    return RedirectToAction("Index");
+                    return RedirectToAction("UserIndex", "Home");
             }
             ModelState.AddModelError(string.Empty, "Ha ocurrido un error");
             return View(cliente);
@@ -91,7 +96,7 @@ namespace MasVeterinarias.UI.Controllers
             Cliente cliente = null;
             using (var client = new HttpClient())
             {
-                id = int.Parse(HttpContext.Session.GetString("Id"));
+                id = 1;
                 client.BaseAddress = new Uri("https://localhost:44357/api/");
                 var responseTask = client.GetAsync("Cliente/" + id.ToString());
                 responseTask.Wait();
