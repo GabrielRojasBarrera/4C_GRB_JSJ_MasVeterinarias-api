@@ -5,9 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Templates\**" />
     <Compile Remove="Upload\**" />
+    <Content Remove="Templates\**" />
     <Content Remove="Upload\**" />
+    <EmbeddedResource Remove="Templates\**" />
     <EmbeddedResource Remove="Upload\**" />
+    <None Remove="Templates\**" />
     <None Remove="Upload\**" />
   </ItemGroup>
 
@@ -26,7 +30,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Templates\" />
     <Folder Include="Views\DetallesCita\" />
     <Folder Include="wwwroot\lib\bootstrap\" />
     <Folder Include="wwwroot\lib\bootstrap\dist\js\" />
@@ -37,5 +40,7 @@
     <Folder Include="wwwroot\lib\jquery\dist\" />
     <Folder Include="wwwroot\Uploads\" />
   </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>
