@@ -80,19 +80,15 @@
             calendar.render();
 
             $('#btnEdit').click(function(){
-
+                GetDataUI("POST")
             });
 
             function GetDataUI(method)
             {
 
                 NewEven = {
-                    id: $('#txtId').val(),
-                    ClienteId: $('#txtClient').val(),
-                    NombreMascota: $('#txtPet').val(),
-                    Hora: $('#txtStart').val(),
-                    start: $('#txtFecha').val(),
-                    ServicioId: $('#txtService').val(),
+                    id: $('#txtId').val(),                    
+                    status: $('#txtStatus').val(),
                     '_method': method
                 }
                 return(NewEven);
@@ -134,7 +130,7 @@
                     <div class="d-none">
                         Id:
                         <input type="text" name="txtId" id="txtId">
-                        <br />
+                        <br/>
                     </div>
 
                     <div class="form-row">
@@ -160,11 +156,11 @@
                         </div>
                         
                         <div class="form-group col-md-12">
-                            <label>Status:</label>
-                            
-                            <select class="form-control" name="txtStatus" id="txtStatus">
+                            <label>Status:</label>                            
+                            <select class="form-control" readonly type="text" name="txtStatus" id="txtStatus">                               
+                                <option selected >Pendiente</option>
                                 <option>Aceptada</option>
-                                <option>Rechazada</option>                                
+                                <option>Rechazada</option>
                             </select>
                             
                         </div>
@@ -176,7 +172,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" asp-controller="Home" asp-action="VIndex"  id="btnEdit" class="btn btn-primary " data-dismiss="modal">Guardar</button>                    
+                    <button type="submit" id="btnEdit" class="btn btn-primary " >Guardar</button>                    
                 </div>
             </div>
         </div>

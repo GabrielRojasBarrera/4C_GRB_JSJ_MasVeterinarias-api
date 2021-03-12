@@ -2,59 +2,85 @@
 
 @{
     ViewData["Title"] = "Details";
+    Layout = "_LayoutUser";
 }
 
-<h1>Details</h1>
+<div class="container min-vh-100">
 
-<div>
-    <h4>Cita</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Id)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Id)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.VeterinariaId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.VeterinariaId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ClienteId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ClienteId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NombreMascota)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.NombreMascota)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Hora)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Hora)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Fecha)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Fecha)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ServicioId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ServicioId)
-        </dd>
-    </dl>
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">
+        Hola Usuario
+
+    </h1>
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="index.html">Cita</a>
+        </li>
+        <li class="breadcrumb-item active">Detalles</li>
+    </ol>
+
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Sidebar Column -->
+        <div class="col-lg-3 mb-4">
+            <div class="list-group">
+                <a asp-controller="Cliente" asp-action="Details" class="list-group-item">Mis datos</a>
+                <a asp-controller="Cita" asp-action="Detalles" class="list-group-item">Historial de citas</a>
+
+
+            </div>
+        </div>
+        <!-- Content Column -->
+        <div class="col-lg-9 mb-4">
+            <h3>Detalles de la cita</h3>
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Id)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Id)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.VeterinariaId)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.VeterinariaId)
+                </dd>
+                
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.NombreMascota)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.NombreMascota)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Hora)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Hora)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Fecha)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Fecha)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.ServicioId)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.ServicioId)
+                </dd>
+            </dl>
+
+            <div>               
+                <a asp-action="Detalles">Regresar a la Lista</a>
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+
 </div>
-<div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
-</div>
+
+

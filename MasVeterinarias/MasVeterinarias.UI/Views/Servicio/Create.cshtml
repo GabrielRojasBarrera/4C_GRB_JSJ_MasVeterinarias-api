@@ -52,8 +52,9 @@
                     <label>Imagen:</label>
                     <div class="input-group mb-3">
                         <div class="custom-file">
-                            <input asp-for="MyFile" type="file" class="custom-file-input" id="customFile">
+                            <input asp-for="ImageService" type="file" class="custom-file-input" id="customFile">
                             <label class="custom-file-label" for="customFile">Elige una imagen</label>
+                            <span asp-validation-for="Imagen" class="text-danger"></span>
                         </div>
 
                     </div>

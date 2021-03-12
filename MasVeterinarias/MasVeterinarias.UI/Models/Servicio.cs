@@ -15,8 +15,7 @@ namespace MasVeterinarias.UI.Models
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
         public string Raza { get; set; }
-
-        public IFormFile MyFile { get; set; }
+        public IFormFile ImageService { get; set; }
 
     }
 }

@@ -76,7 +76,7 @@ namespace MasVeterinarias.UI.Controllers
         {
             using (var Client = new HttpClient())
             {
-
+                cita.Estatus = "Aceptada";
                 cita.VeterinariaId = 1;
                 cita.ClienteId = 1;
                 Client.BaseAddress = new Uri("https://localhost:44357/api/Cita");
@@ -85,7 +85,7 @@ namespace MasVeterinarias.UI.Controllers
 
                 var postresult = posjob.Result;
                 if (postresult.IsSuccessStatusCode)
-                    return RedirectToAction("UserIndex", "Home");
+                    return RedirectToAction("Details", "Cliente");
             }
             ModelState.AddModelError(string.Empty, "Ha ocurrido un error");
             return View(cita);
@@ -137,7 +137,7 @@ namespace MasVeterinarias.UI.Controllers
 
         public ActionResult Details(int id)
         {
-            Usuario usuario = null;
+            Cita cita = null;
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("https://localhost:44357/api/");
@@ -147,15 +147,37 @@ namespace MasVeterinarias.UI.Controllers
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
-                    var readtask = result.Content.ReadAsAsync<Usuario>();
+                    var readtask = result.Content.ReadAsAsync<Cita>();
                     readtask.Wait();
-                    usuario = readtask.Result;
+                    cita = readtask.Result;
                 }
             }
 
-            return View(usuario);
+            return View(cita);
         }
+        public ActionResult Detalles()
+        {
+            IEnumerable<Cita> cita = null;
+            using (var Client = new HttpClient())
+            {
+                Client.BaseAddress = new Uri("https://localhost:44357/api/");
+                var responseTask = Client.GetAsync("Cita");
+                responseTask.Wait();
 
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readjob = result.Content.ReadAsAsync<IList<Cita>>();
+                    readjob.Wait();
+                    cita = readjob.Result;
+                }
+
+
+            }
+            return View(cita);
+
+
+        }
 
         public ActionResult Delete(int id)
         {

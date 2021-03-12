@@ -52,13 +52,13 @@ namespace MasVeterinarias.UI.Controllers
         public async Task<ActionResult> Create(Producto producto)
         {
             var filename = System.IO.Path.Combine(_enviroment.ContentRootPath,
-                "wwwroot", "Uploads", producto.MyFile.FileName);
+                "wwwroot", "Uploads", "Products", producto.ImageProducts.FileName);
 
-            await producto.MyFile.CopyToAsync(
+            await producto.ImageProducts.CopyToAsync(
                new System.IO.FileStream(filename, System.IO.FileMode.Create));
             using (var Client = new HttpClient())
             {
-                producto.Imagen = producto.MyFile.FileName;
+                producto.Imagen = producto.ImageProducts.FileName;
                 producto.VeterinariaId = 1;
                 Client.BaseAddress = new Uri("https://localhost:44357/api/Producto");
                 var posjob = Client.PostAsJsonAsync<Producto>("Producto", producto);

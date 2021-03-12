@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -52,11 +53,13 @@ namespace MasVeterinarias.UI.Controllers
         [HttpPost]
         public async Task<ActionResult> Create(Veterinaria veterinaria)
         {
+            //FileStream fs;
             var filename = System.IO.Path.Combine(_enviroment.ContentRootPath,
-                "wwwroot", "Uploads", veterinaria.MyFile.FileName);
+                "wwwroot", "Uploads", "Banners", veterinaria.MyFile.FileName);
 
-            await veterinaria.MyFile.CopyToAsync(
-               new System.IO.FileStream(filename, System.IO.FileMode.Create));
+            await  veterinaria.MyFile.CopyToAsync(
+             /*fs =*/ new System.IO.FileStream(filename, System.IO.FileMode.Create));
+            //fs.Close();
             using (var Client = new HttpClient())
             {
                
@@ -70,6 +73,7 @@ namespace MasVeterinarias.UI.Controllers
                 if (postresult.IsSuccessStatusCode)
                     return RedirectToAction("VIndex", "Home");
             }
+            
             ModelState.AddModelError(string.Empty, "Ha ocurrido un error");
             return View(veterinaria);
         }
@@ -217,11 +221,6 @@ namespace MasVeterinarias.UI.Controllers
 
             return RedirectToAction("Index");
         }
-
-
-        
-
-        
 
 
     }

@@ -1,10 +1,8 @@
 ﻿using MasVeterinarias.UI.Models;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -53,13 +51,13 @@ namespace MasVeterinarias.UI.Controllers
         public async Task<ActionResult> Create(Servicio servicio)
         {
             var filename = System.IO.Path.Combine(_enviroment.ContentRootPath,
-               "wwwroot", "Uploads", servicio.MyFile.FileName);
+               "wwwroot", "Uploads", "Services", servicio.ImageService.FileName);
 
-            await servicio.MyFile.CopyToAsync(
+            await servicio.ImageService.CopyToAsync(
                new System.IO.FileStream(filename, System.IO.FileMode.Create));
             using (var Client = new HttpClient())
             {
-                servicio.Imagen = servicio.MyFile.FileName;
+                servicio.Imagen = servicio.ImageService.FileName;
                 servicio.VeterinariaId = 1;
                 Client.BaseAddress = new Uri("https://localhost:44357/api/Servicio");
                 var posjob = Client.PostAsJsonAsync<Servicio>("servicio", servicio);
