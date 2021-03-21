@@ -13,7 +13,7 @@
         <div class="col-md-8 mx-auto">
             <div class="contact-form">
                 <h1>¡Anunciate!</h1>
-                <p class="hint-text">Complata el registro para comenzar a anunciarte como nunca antes.</p>
+                <p class="hint-text">Completa el registro para comenzar a anunciarte como nunca antes.</p>
                 <form asp-action="Create" asp-controller="Veterinaria" method="post" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-sm-6">
@@ -61,14 +61,14 @@
                         <div class="col-sm-6">
                             <div class="form-group md-form md-outline">
                                 <label for="default-picker">Hora de Apertura</label>
-                                <input asp-for="HoraApertura" type="time" class="form-control" id="default-picker" required>
+                                <input asp-for="HoraApertura" type="time" class="form-control"  required>
                                 <span asp-validation-for="HoraApertura" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group md-form md-outline">
                                 <label for="default-picker">Hora de Cierre</label>
-                                <input asp-for="HoraCierre" type="time" class="form-control" id="default-picker" required>
+                                <input asp-for="HoraCierre" type="time" class="form-control"  required>
                                 <span asp-validation-for="HoraCierre" class="text-danger"></span>
                             </div>
                         </div>

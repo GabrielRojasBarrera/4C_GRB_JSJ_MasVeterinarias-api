@@ -11,6 +11,8 @@ namespace MasVeterinarias.Infraestructure.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Veterinaria> builder)
         {
+            builder.Property(e => e.Id).ValueGeneratedNever();
+
             builder.Property(e => e.CreateAt).HasColumnType("datetime");
 
             builder.Property(e => e.Descripcion)

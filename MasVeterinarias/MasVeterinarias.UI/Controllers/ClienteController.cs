@@ -52,7 +52,7 @@ namespace MasVeterinarias.UI.Controllers
         {
             using (var Client = new HttpClient())
             {
-
+                cliente.Id = int.Parse(HttpContext.Session.GetString("Id"));
                 cliente.UsuarioId = int.Parse(HttpContext.Session.GetString("Id"));
                 Client.BaseAddress = new Uri("https://localhost:44357/api/Cliente");
                 var posjob1 = Client.PostAsJsonAsync<Cliente>("cliente", cliente);
@@ -74,7 +74,7 @@ namespace MasVeterinarias.UI.Controllers
             Cliente cliente = null;
             using (var client = new HttpClient())
             {
-                id = 1;
+                id = int.Parse(HttpContext.Session.GetString("Id")); 
                 client.BaseAddress = new Uri("https://localhost:44357/api/");
                 var responseTask = client.GetAsync("Cliente/" + id.ToString());
                 responseTask.Wait();
@@ -96,7 +96,7 @@ namespace MasVeterinarias.UI.Controllers
             Cliente cliente = null;
             using (var client = new HttpClient())
             {
-                id = 1;
+                id = int.Parse(HttpContext.Session.GetString("Id")); 
                 client.BaseAddress = new Uri("https://localhost:44357/api/");
                 var responseTask = client.GetAsync("Cliente/" + id.ToString());
                 responseTask.Wait();

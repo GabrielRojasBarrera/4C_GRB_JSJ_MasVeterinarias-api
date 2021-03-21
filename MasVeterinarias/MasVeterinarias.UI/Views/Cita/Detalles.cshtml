@@ -36,13 +36,16 @@
                 <thead>
                     <tr>
                         <th>
-                            @Html.DisplayNameFor(model => model.Id)
-                        </th>
-                        <th>                            
                             Servicio
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.Estatus)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Fecha)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Hora)
                         </th>
                     </tr>
                 </thead>
@@ -51,20 +54,22 @@
                     {
                         <tr>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Id)
-                            </td>
-
-                            <td>
                                 @Html.DisplayFor(modelItem => item.ServicioId)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Estatus)
                             </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Fecha)
+                            </td>
+                            <td >
+                                @Html.DisplayFor(modelItem => item.Hora) 
+                            </td>
 
                             <td>
-                               
+
                                 @Html.ActionLink("Details", "Details", new { id = item.Id })
-                                
+
                             </td>
                         </tr>
                     }

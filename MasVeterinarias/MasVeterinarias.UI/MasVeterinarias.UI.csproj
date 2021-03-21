@@ -39,8 +39,8 @@
     <Folder Include="wwwroot\lib\jquery\" />
     <Folder Include="wwwroot\lib\jquery\dist\" />
     <Folder Include="wwwroot\Uploads\Banners\" />
-    <Folder Include="wwwroot\Uploads\Products\" />
     <Folder Include="wwwroot\Uploads\Services\" />
+    <Folder Include="wwwroot\Uploads\Products\" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>

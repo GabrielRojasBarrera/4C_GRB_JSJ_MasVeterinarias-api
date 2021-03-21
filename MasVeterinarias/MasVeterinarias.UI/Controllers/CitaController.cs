@@ -76,9 +76,9 @@ namespace MasVeterinarias.UI.Controllers
         {
             using (var Client = new HttpClient())
             {
-                cita.Estatus = "Aceptada";
+                cita.Estatus = "Pendiente";
                 cita.VeterinariaId = 1;
-                cita.ClienteId = 1;
+                cita.ClienteId = int.Parse(HttpContext.Session.GetString("Id")); 
                 Client.BaseAddress = new Uri("https://localhost:44357/api/Cita");
                 var posjob = Client.PostAsJsonAsync<Cita>("Cita", cita);
                 posjob.Wait();

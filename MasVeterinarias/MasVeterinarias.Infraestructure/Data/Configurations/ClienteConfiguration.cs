@@ -11,6 +11,8 @@ namespace MasVeterinarias.Infraestructure.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Cliente> builder)
         {
+            builder.Property(e => e.Id).ValueGeneratedNever();
+
             builder.Property(e => e.Apellido)
                    .HasMaxLength(50)
                    .IsUnicode(false);

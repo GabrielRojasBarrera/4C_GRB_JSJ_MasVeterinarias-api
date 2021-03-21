@@ -5,7 +5,8 @@ using System.Text;
 namespace MasVeterinarias.Domain.DTOs
 {
     public  class VeterinariaRequestDto
-    {        
+    {
+        public int Id { get; set; }
         public int? UsuarioId { get; set; }
         public string Descripcion { get; set; }
         public string Imagen { get; set; }

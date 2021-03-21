@@ -62,7 +62,7 @@ namespace MasVeterinarias.UI.Controllers
             //fs.Close();
             using (var Client = new HttpClient())
             {
-               
+               veterinaria.Id = int.Parse(HttpContext.Session.GetString("Id"));
                 veterinaria.Imagen = veterinaria.MyFile.FileName;
                 veterinaria.UsuarioId = int.Parse(HttpContext.Session.GetString("Id"));
                 Client.BaseAddress = new Uri("https://localhost:44357/api/Veterinaria");
@@ -114,7 +114,6 @@ namespace MasVeterinarias.UI.Controllers
             using (var client = new HttpClient())
             {
                 veterinaria.UsuarioId = int.Parse(HttpContext.Session.GetString("Id"));
-
                 veterinaria.Imagen = veterinaria.MyFile.FileName;
                 client.BaseAddress = new Uri("https://localhost:44357/api/Veterinaria");
                 

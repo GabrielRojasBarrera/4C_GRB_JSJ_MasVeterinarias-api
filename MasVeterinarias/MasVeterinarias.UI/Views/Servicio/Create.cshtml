@@ -108,13 +108,15 @@
                 <div class="control-group form-group">
                     <div class="controls">
                         <label>Diponibilidad:</label>
-                        <input asp-for="Disponibilidad" type="text" class="form-control" id="name" required data-validation-required-message="Porfavor Seleccione la Dsiponibilidad.">
+                        <select class="form-control" type="text" asp-for="Disponibilidad" required data-validation-required-message="Porfavor Seleccione la Dsiponibilidad.">
+                            <option>Disponible</option>
+                            <option>No Disponible</option>                            
+                        </select>                        
                         <span asp-validation-for="Disponibilidad" class="text-danger"></span>
                     </div>
                 </div>
 
-                <div id="success"></div>
-                <!-- For success/fail messages -->
+                <div id="success"></div>                
                 <button type="submit" class="btn btn-primary" id="sendMessageButton" onclick="alert('Servicio Agregado EXITOSAMENTE')">Crear</button>
                 <button type="button" asp-controller="Servicio" asp-action="Index" class="btn btn-danger" onclick="alert('¿Estas seguro de cancelar el Registro?')">Cancelar</button>
             </form>
