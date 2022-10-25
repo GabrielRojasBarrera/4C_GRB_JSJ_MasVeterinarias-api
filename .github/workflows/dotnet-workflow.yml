@@ -13,7 +13,7 @@ jobs:
     
     defaults:
       run:
-        working-directory: MasVeterinarias.UI
+        working-directory: 4C_GRB_JSJ_MasVeterinarias-api/MasVeterinarias.UI
         
     steps:
     - uses: actions/checkout@v3
@@ -24,6 +24,6 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build 4C_GRB_JSJ_MasVeterinarias-api/MasVeterinarias.UI/
     - name: Test
       run: dotnet test --no-build --verbosity normal
