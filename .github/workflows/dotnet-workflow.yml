@@ -13,7 +13,7 @@ jobs:
     
     defaults:
       run:
-        working-directory: 4C_GRB_JSJ_MasVeterinarias-api/MasVeterinarias.UI
+        working-directory: MasVeterinarias.UI
         
     steps:
     - uses: actions/checkout@v3
