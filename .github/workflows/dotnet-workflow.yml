@@ -10,10 +10,6 @@ jobs:
   build-dotnet-app:
 
     runs-on: ubuntu-latest
-    
-    defaults:
-      run:
-        working-directory: MasVeterinarias.UI
         
     steps:
     - uses: actions/checkout@v3
